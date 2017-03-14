@@ -35,4 +35,12 @@ More info: [Generating](https://hexo.io/docs/generating.html)
 $ hexo deploy
 ```
 
+``` java
+public class Hello{
+	public static void main(String[] args){
+		System.out.println("Hello,Hexo.");
+	}
+}
+```
+
 More info: [Deployment](https://hexo.io/docs/deployment.html)

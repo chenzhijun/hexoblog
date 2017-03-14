@@ -3,16 +3,16 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: chenzhijun
 subtitle:
-description:
-author: John Doe
-language:
+description: 我是谁？从哪里来？到哪里去？
+author: chenzhijun
+language: zh-Hans
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: http://chenzhijun.github.com
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -63,9 +63,22 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type:
+  type: git
+  repository: https://github.com/chenzhijun/chenzhijun.github.com.git
+  branch: master
+
+#baidu_anlytics
+baidu_analytics: d05a9c3ba0ce3bcaebf22ef5ba8b3109
+
+jiathis: true
+
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
