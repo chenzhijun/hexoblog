@@ -76,6 +76,7 @@ deploy:
 baidu_analytics: d05a9c3ba0ce3bcaebf22ef5ba8b3109
 
 jiathis: true
+avatar: /images/avatar.jpg
 
 search:
   path: search.xml
