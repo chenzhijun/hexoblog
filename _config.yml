@@ -3,16 +3,16 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: chenzhijun
-subtitle:
-description: 我是谁？从哪里来？到哪里去？
-author: chenzhijun
+title: 牛肉饺子
+subtitle: czj的小站
+description: 这条路走不通，那就换条路继续走。
+author: 陈志军
 language: zh-Hans
-timezone:
+timezone: 
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://chenzhijun.github.com
+url: http://chenzhijun.me
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -73,7 +73,7 @@ deploy:
   branch: master
 
 #baidu_anlytics
-baidu_analytics: d05a9c3ba0ce3bcaebf22ef5ba8b3109
+#baidu_analytics: d05a9c3ba0ce3bcaebf22ef5ba8b3109
 
 jiathis: true
 avatar: /images/avatar.jpg
