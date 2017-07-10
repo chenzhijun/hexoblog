@@ -8,6 +8,7 @@ gsettings set org.compiz.unityshell:/org/compiz/profiles/unity/plugins/unityshel
 	```
 		sudo rm /var/cache/apt/archives/lock
 		sudo rm /var/lib/dpkg/lock
+		sudo rm /var/lib/apt/lists/lock
 	```
 2: 翻墙软件
     a)安装shadowsocks-qt5;图形界面	
@@ -133,3 +134,9 @@ alias docker="sudo docker"
 alias open="xdg-open"
 alias p="proxychains4"
 =================================================
+
+
+
+$ sudo add-apt-repository ppa:noobslab/themes
+$ sudo apt-get update
+$ sudo apt-get install flatabulous-theme
