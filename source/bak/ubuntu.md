@@ -140,3 +140,15 @@ alias p="proxychains4"
 $ sudo add-apt-repository ppa:noobslab/themes
 $ sudo apt-get update
 $ sudo apt-get install flatabulous-theme
+
+
+=========================================
+
+
+:s/old/new/
+vim编辑器会跳到 old 第一次出现的地方,并用 new 来替换。可以对替换命令作一些修改来替
+换多处文本。
+ :s/old/new/g :一行命令替换所有 old 。
+ :n,ms/old/new/g :替换行号 n 和 m 之间所有 old 。
+ :%s/old/new/g :替换整个文件中的所有 old 。
+ :%s/old/new/gc :替换整个文件中的所有 old ,但在每次出现时提示
