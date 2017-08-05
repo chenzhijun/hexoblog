@@ -32,8 +32,8 @@ Interference happens when two operations, running in different threads, but acti
 
 干扰发生在两个正在运行在不同的线程中交错的操作同一个数据。这说明着两个操作由多个步骤组成，并且步骤之间还有重叠。
 
-It might not seem possible for operations on instances of Counter to interleave, since both operations on c are single, simple statements. However, even simple statements can translate to multiple steps by the virtual machine. We won't examine the specific steps the virtual machine takes — it is enough to know that the single expression c++ can be decomposed into three steps:
-
+```It might not seem possible for operations on instances of Counter to interleave, since both operations on c are single, simple statements. However, even simple statements can translate to multiple steps by the virtual machine. We won't examine the specific steps the virtual machine takes — it is enough to know that the single expression c++ can be decomposed into three steps:
+```
 它看起来不太可能出现 Counter 的实例操作会交错，因为两个对 c 的操作都是单独的简单的语句。然而，就算简单的语句也可以被虚拟机当做是多个步骤执行。我们不需要去检查虚拟机花费的具体的步骤-表达式 c++ 就足够我们知道可以分解成三个步骤：
 
 1.  Retrieve the current value of c.

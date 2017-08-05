@@ -1,9 +1,11 @@
 Memory Consistency Errors
 ============================================================
 
-# 
+#
 
+```
 Memory consistency errors occur when different threads have inconsistent views of what should be the same data. The causes of memory consistency errors are complex and beyond the scope of this tutorial. Fortunately, the programmer does not need a detailed understanding of these causes. All that is needed is a strategy for avoiding them.
+```
 
 内存一致性错误发生在不同的线程对于同一个数据见到的不一样的结果。这回导致复杂的内存一致性错误，这已经超过了本教程的范围。幸运的是，程序开发者不需要详细的清楚这种发生原因。仅仅需要的是知道如何避免他们的策略。
 

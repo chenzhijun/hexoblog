@@ -35,11 +35,7 @@ tags:
         true: 'true',
         //接口
         IF_validatePasswordExist: '../validation',//验证密码是否存在
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> e3e1882d29f73df5fcd5d2443d0d69115d4ebdb4
         //地址
         url_verify: 'view/verify',
 
@@ -209,7 +205,7 @@ var Style = Object.create(null, {
 <<<<<<< HEAD
 ### jQuery
 =======
-### jQuery 
+### jQuery
 >>>>>>> e3e1882d29f73df5fcd5d2443d0d69115d4ebdb4
 ```
 //绑定事件

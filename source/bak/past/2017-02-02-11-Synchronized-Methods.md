@@ -1,9 +1,11 @@
 Synchronized Methods
 ============================================================
 
-# 
+#
 
+```
 The Java programming language provides two basic synchronization idioms: synchronized methods and synchronized statements. The more complex of the two, synchronized statements, are described in the next section. This section is about synchronized methods.
+```
 
 To make a method synchronized, simply add the synchronized keyword to its declaration:
 
@@ -36,11 +38,11 @@ Note that constructors cannot be synchronized — using the synchronized keyword
 
  When constructing an object that will be shared between threads, be very careful that a reference to the object does not "leak" prematurely. For example, suppose you want to maintain a
 
- `List` 
+ `List`
 
 called
 
- `instances` 
+ `instances`
 
 containing every instance of class. You might be tempted to add the following line to your constructor:
 
@@ -50,7 +52,7 @@ instances.add(this);
 
 But then other threads can use
 
- `instances` 
+ `instances`
 
 to access the object before construction of the object is complete.
 

@@ -1,11 +1,11 @@
 Defining and Starting a Thread
 ============================================================
 
-An application that creates an instance of Thread must provide the code that will run in that thread. There are two ways to do this:
+An application that creates an instance of Thread must provide the code that will run in that thread. There are two ways to do this
 
 一个应用如果要创建一个 Thread 实例必须提供重写线程的 run 方法。这里提供两种方式来实现：
 
-*   Provide a Runnable object. The [Runnable][1] interface defines a single method, run, meant to contain the code executed in the thread. The Runnable object is passed to the Thread constructor, as in the [HelloRunnable][2] example:
+*   Provide a Runnable object. The [Runnable][1] interface defines a single method, run, meant to contain the code executed in the thread. The Runnable object is passed to the Thread constructor, as in the [HelloRunnable][2] example：
 	提供一个 Runnable 类。Runable 接口只定义了一个方法，run，意味着包含执行的代码在线程里面。Runable 类时传递给了 Thread 的构造方法例如细面的 HelloRuannable 实例：
 
 ```

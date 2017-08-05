@@ -1,7 +1,7 @@
 Interrupts
 ============================================================
 
- 
+
 
 An ___interrupt___ is an indication to a thread that it should stop what it is doing and do something else. It's up to the programmer to decide exactly how a thread responds to an interrupt, but it is very common for the thread to terminate. This is the usage emphasized in this lesson.
 
@@ -12,9 +12,9 @@ A thread sends an interrupt by invoking [interrupt][1] on the Thread object for 
 一个线程发送一个中断通过 Thread 类调用 interrupt 方法来达到中断程序。为了保证终端正确的工作，中断线程必须支持自己的中断。
 
 ### Supporting Interruption
-
+```
 How does a thread support its own interruption? This depends on what it's currently doing. If the thread is frequently invoking methods that throw InterruptedException, it simply returns from the run method after it catches that exception. For example, suppose the central message loop in the SleepMessages example were in the run method of a thread's Runnable object. Then it might be modified as follows to support interrupts:
-
+```
 一个线程怎样支持它自己的中断了？这个取决于它当前正在做什么。如果线程频繁的调用出现中断异常的方法，在它抓到异常之后它仅仅会从 run 方法中返回。例如，在 SleepMessages 例子当中假设中间的消息循环在线程的 run 方法中。之后它可以像下面这样的修改来支持终端
 
 ```
