@@ -2,9 +2,8 @@
 title: 问题总结
 date: 2017-07-24 14:43:42
 tags:
-	- Life
-
-categories: Life
+	- Question
+categories: Question
 ---
 
 ## Java问题总结

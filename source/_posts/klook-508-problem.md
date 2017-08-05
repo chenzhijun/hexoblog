@@ -1,9 +1,10 @@
 ---
-title: 5月8号遇到的问题
+title: klook-508-problem
 date: 2017-05-08 23:27:55
-tags:	
-	- 每日开发问题
-categories: 问题
+tags:
+	- Question
+categories: Question
+
 ---
 
 ## 5月8日问题
@@ -64,7 +65,7 @@ func Test_enum(t *testing.T) {
 const (
 	//英语，中文简体，繁体，韩文，泰文,ALL
 	ALL   = iota //0
-	th_TH 			//1 
+	th_TH 			//1
 	ko_KR 			//2
 	zh_TW="test" //3
 	zh_CN			// 值为test， iota为 4
@@ -106,9 +107,3 @@ final static int [] sizeTable = { 9, 99, 999, 9999, 99999, 999999, 9999999,
                                       99999999, 999999999, Integer.MAX_VALUE };
 ```
 觉得好可爱的写法。哈哈判断位数倒是可以了嘿嘿。
-
-
-
-
-
-
