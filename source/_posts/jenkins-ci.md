@@ -146,7 +146,7 @@ fi
 
 start.sh, 如果是centos服务器,用的是`yum install java` ,查找java_home的方法:一直找到软连接的真实指定位置:
 
-![查找java_home](/images/jenkins/image14/png)
+![查找java_home](/images/jenkins/img14/png)
 
 ```
 export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.141-1.b16.el7_3.x86_64/jre
