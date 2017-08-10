@@ -56,7 +56,7 @@ __jenkins就是相当于一个web服务,与环境没有太大关系__
 
 ![创建用户](/imags/jenkins/img3.png)
 
-__ps:这里记得选择右边那个,左边的continue as admin 这个时候是没有创建的,默认账号密码为admin/初始密码__
+__ps:这里记得选择右边`Save And Finish`那个,左边的`continue as admin` 这个时候是没有创建的,默认账号密码为admin/初始密码__
 
 安装成功后可以说第一步完成.
 
