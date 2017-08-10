@@ -236,10 +236,10 @@ public class StringTest
         String abcdef_origin = new String("abcdef");
         System.out.println(abcdef == abcdef_origin); //false
 
-
 ```
 
 ![String类反编译图片](/images/encode-java-stringtest.png)
+反编译的图片
 
 
 ```
@@ -260,7 +260,7 @@ System.out.println((abcd1 == abcd5)); // false
 
 ![String类反编译图片2](/images/encode-java-stringtest2.png)
 
-图中可以看出其实String底层的相加也是用的StringBuild.
+图中可以看出其实String底层的相加也是用的StringBuild
 
 
 ....未完待续....
