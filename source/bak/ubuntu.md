@@ -145,6 +145,14 @@ $ sudo apt-get install flatabulous-theme
 =========================================
 
 
+下载nodejs 的源码包：
+解压后进入目录：
+./configure
+sudo make install
+=========================
+
+
+
 :s/old/new/
 vim编辑器会跳到 old 第一次出现的地方,并用 new 来替换。可以对替换命令作一些修改来替
 换多处文本。
