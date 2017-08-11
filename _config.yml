@@ -6,7 +6,7 @@
 favicon: /favicon.ico
 
 # Set default keywords (Use a comma to separate)
-keywords: "Hexo, NexT"
+keywords: "����·����˼��"
 
 # Set rss to false to disable feed link.
 # Leave rss as empty to use site's feed link.
@@ -47,12 +47,13 @@ index_with_subtitle: false
 # When running the site in a subdirectory (e.g. domain.tld/blog), remove the leading slash (/archives -> archives)
 menu:
   home: /
-  #categories: /categories/
-  #about: /about/
-  archives: /archives/
-  tags: /tags/
+  categories: /categories
+  #about: /about
+  archives: /archives
+  tags: /tags
   #sitemap: /sitemap.xml
-  #commonweal: /404/
+  #commonweal: /404.html
+
 
 # Enable/Disable menu icons.
 # Icon Mapping:
@@ -154,13 +155,14 @@ sidebar:
   #  - always  expand for all pages automatically
   #  - hide    expand only when click on the sidebar toggle icon.
   #  - remove  Totally remove sidebar including sidebar toggle.
-  display: post
+  #display: post
   #display: always
-  #display: hide
+  display: hide
   #display: remove
 
   # Sidebar offset from top menubar in pixels.
   offset: 12
+  #offset_float: 0 ��ǰ������
   offset_float: 12
 
   # Back to top in sidebar
@@ -305,9 +307,10 @@ font:
 
 # MathJax Support
 mathjax:
-  enable: false
+  enable: true
   per_page: false
   cdn: //cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML
+# cdn: //cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 
 # Han Support docs: https://hanzi.pro/
 han: false
@@ -316,15 +319,15 @@ han: false
 #swiftype_key:
 
 # Baidu Analytics ID
-#baidu_analytics:
+baidu_analytics: d05a9c3ba0ce3bcaebf22ef5ba8b3109
 
 # Duoshuo ShortName
-#duoshuo_shortname:
+#duoshuo_shortname: chenzhijun
 
 # Disqus
 disqus:
   enable: false
-  shortname:
+  shortname: chenzhijun-me
   count: true
 
 # Hypercomments
@@ -333,8 +336,8 @@ disqus:
 # changyan
 changyan:
   enable: false
-  appid:
-  appkey:
+  appid: cyt9QHuQ0
+  appkey: 2d0ce16f8accfa335843264a44b1d83d
 
 # Support for youyan comments system.
 # You can get your uid from http://www.uyan.cc
@@ -367,7 +370,7 @@ changyan:
 #google_site_verification:
 
 # Google Analytics
-#google_analytics:
+google_analytics: UA-98129235-1
 
 # Yandex Webmaster tools verification setting
 # See: https://webmaster.yandex.ru/
@@ -386,8 +389,9 @@ changyan:
 duoshuo_info:
   ua_enable: true
   admin_enable: false
-  user_id: 0
-  #admin_nickname: Author
+  #user_id: 0
+  user_id: 6303406395207189250 
+  admin_nickname: chenzhijun
 
 
 # Facebook SDK Support.
@@ -428,15 +432,15 @@ rating:
 # Show number of visitors to each article.
 # You can visit https://leancloud.cn get AppID and AppKey.
 leancloud_visitors:
-  enable: false
-  app_id: #<app_id>
-  app_key: #<app_key>
+  enable: true
+  app_id: 3Ipv4LCq5xwYkaKUFvu27F0x-gzGzoHsz
+  app_key: fAbLTc2xazR7sRtkfvQ7uIiO
 
 # Show PV/UV of the website/page with busuanzi.
 # Get more information on http://ibruce.info/2015/04/04/busuanzi/
 busuanzi_count:
   # count values only if the other configs are false
-  enable: false
+  enable: true
   # custom uv span for the whole site
   site_uv: true
   site_uv_header: <i class="fa fa-user"></i>
@@ -491,7 +495,7 @@ algolia_search:
 # Local search
 # Dependencies: https://github.com/flashlab/hexo-generator-search
 local_search:
-  enable: false
+  enable: true
   # if auto, trigger search by changing input
   # if manual, trigger search by pressing enter key or search button
   trigger: auto
@@ -662,7 +666,10 @@ vendors:
   # Internal version: 3.3.0
   # https://github.com/ethantw/Han
   han:
-
+sitemap: 
+  path: sitemap.xml
+# baidusitemap:
+#   path: baidusitemap.xml
 
 # Assets
 css: css
