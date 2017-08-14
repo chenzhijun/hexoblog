@@ -265,7 +265,21 @@ System.out.println((abcd1 == abcd5)); // false
 
 ....未完待续....
 // 相似点，同类
+
+StringBuilder: 如果不考虑多线程的问题,那么我们就是用Stringbuilder其实在String的底层实现中,也是用的StringBuilder来对字符做操作;
+
+StringBuffer: StringBuffer的所有方法都是同步的,可以看到源码中都有Synchronize关键字.操作字符串的方法基本类似.
+
 // 常用方法
-// hashCode，equals
+indexOf(); 返回第一个匹配的位置,没有匹配返回-1;
+append();
+split();split中的"abc".split("abc"),会返回"abc",长度为1; 
+toString();
+equals();//复写了Object
+hashCode();//复写了Object
+trim();去掉两端空格
+.....
+
 // 是否同步，线程安全
-// 不同步是否有同步的
+
+String中的方法是不同步的,但是String是一个final类.final类不能被继承,基本类型的包装类基本都是final的,也就是都不能被继承. 另外记住一个. final修饰的String类, 不是说private String a; 那么a也是final类型的.这是错误的.  如果一个String a = "1234"; a="1233423"; 这个时候a是重新指向了1233424而不是将原来的值改变了.
