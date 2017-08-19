@@ -20,21 +20,19 @@ Java工程师毕业一年,Linux一般熟悉,Java初阶,所以不用担心难度,
 
 __jenkins就是相当于一个web服务,与环境没有太大关系__
 
-1) windows   // 其实跟系统无关
+1) Linux/Windows 操作
 
-2) jenkins.msi //安装就是了,其他的是系统可以下载war包在tomcat里面运行
+2) jenkins.jar/jenkins.msi //安装就是了,其他的是系统可以下载war包在tomcat里面运行
 
 3) gitlab.com 账号
 
-4) gitlab 公有仓库
+4) gitlab 公有仓库放置 spring-boot 源码
 
-5) spring-boot 项目源码
+5) maven // 可以用jenkins安装也可以用本地的
 
-6) maven // 可以用jenkins安装也可以用本地的
+6) JDK 安装jenkins的主机必须要有jdk, docker版本除外
 
-7) JDK  安装jenkins的主机必须要有jdk, docker版本除外
-
-8) 一台Linux服务器
+7) 部署服务的Linux服务器
 
 <!--more--> 
 
