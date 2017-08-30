@@ -120,6 +120,8 @@ __ps:这里记得选择右边`Save And Finish`那个,左边的`continue as admin
 
 ![任务项目配置](/images/jenkins/img11.gif)
 
+__更正下配置,maven 构建那里跳过测试,应该是 -Dmaven.test.skip=true  -X__
+
 3) 成功后的页面:
 
 ![成功的页面](/images/jenkins/img12.png)
@@ -128,7 +130,7 @@ __ps:这里记得选择右边`Save And Finish`那个,左边的`continue as admin
 
 _ps 附录一段脚本_
 
-stop.sh
+stop.sh:
 
 ```
 #stop.sh
@@ -142,9 +144,7 @@ fi
 
 ```
 
-start.sh, 如果是centos服务器,用的是`yum install java` ,查找java_home的方法:一直找到软连接的真实指定位置:
-
-![查找java_home](/images/jenkins/img14.png)
+start.sh:
 
 ```
 export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.141-1.b16.el7_3.x86_64/jre
@@ -158,5 +158,10 @@ echo "start success"
 
 ```
 
-__记得要给路径或者脚本赋权限,不然jenkins可能出现`nohup: failed to run command java: No such file or directory`,这是没有权限造成的.__
+ 如果是centos服务器,用的是`yum install java`安装的Java环境,查找`java_home`的方法:用`ls -al`一直找到软连接的真实指定位置:
+
+![查找java_home](/images/jenkins/img14.png)
+
+
+__记得要给路径或者脚本赋权限,不然jenkins可能出现__`nohup: failed to run command java: No such file or directory`,__这是没有权限造成的.__
 
