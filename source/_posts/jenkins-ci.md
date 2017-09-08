@@ -154,9 +154,32 @@ chmod 777 /home/girl/girl-0.0.1-SNAPSHOT.jar
 echo "grant right...."
 cd /home/girl/
 nohup ${JAVA_HOME}/bin/java -jar girl-0.0.1-SNAPSHOT.jar > /home/girl/server.log &
+
+whatToFind=seconds
+function watch(){
+ 
+    tail -1f server.log |
+
+        while IFS= read line
+            do
+                echo "buffering:" "$line"
+
+                if [[ "$line" == *"$whatToFind"* ]]; then
+                    echo $msgAppStarted
+                    pkill tail
+                fi
+        done
+}
+watch
+
 echo "start success"
 
 ```
+
+问题：jenkin tail -f server.log的时候一直build unstable。 但是又想让控制台输出日志，所以在脚本里面加上一个watch方法，这样就可以查看到日志输出了。然后在jenkin job配置中添加![2017-09-08-17-10-37-201798171037](/images/qiniu/2017-09-08-17-10-37-201798171037.png)
+
+在执行脚本的时候添加`BUILD_ID=dontKillMe`;就在kill的时候保证jenkins主进程不被杀掉。
+
 
  如果是centos服务器,用的是`yum install java`安装的Java环境,查找`java_home`的方法:用`ls -al`一直找到软连接的真实指定位置:
 
