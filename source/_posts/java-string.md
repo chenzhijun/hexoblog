@@ -283,3 +283,79 @@ trim();去掉两端空格
 // 是否同步，线程安全
 
 String中的方法是不同步的,但是String是一个final类.final类不能被继承,基本类型的包装类基本都是final的,也就是都不能被继承. 另外记住一个. final修饰的String类, 不是说private String a; 那么a也是final类型的.这是错误的.  如果一个String a = "1234"; a="1233423"; 这个时候a是重新指向了1233424而不是将原来的值改变了.
+
+
+### String.intern()
+
+今天看到一个方法，intern() 方法返回的是strings pool ，由String类独自管理。字符池一开始是空的。如果要两个string1.intern()==string2.intern(),仅仅只有当两个的equals（Object）相等才行，调用intern()如果在字符池里面有就返回字符池里面的，如果没有就会加入到字符池中，能够保证的是调用此方法，一定会返回在字符串池中的唯一一个值。
+
+
+#### String.indexOf()
+
+总是觉得String应该是Java里面用的最多的，既然String基于char[]数组，那么多String的一些操作是怎样的？看了下indexOf的源码，然后品味了一下,其实暴露给用户使用的只有indexOf(str),indexOf(str,offSet),两个方法，但是看看源码里面indexOf至少有三个，这个不得不让我们想想：为什么有这么多？而这几个indexOf 在里面的实现都是调用了下面的这个函数`indexOf(source,sourceOffset，sourceCount，target，tagetOffset，targetCount)`;其实可以看到就是源字符串，目标字符串，以及一些字符串的属性。这里一开始我觉得用四个参数就可以了，sourceCount貌似完全可以自己算出来。:
+
+```
+  static int indexOf(char[] source, int sourceOffset, int sourceCount,
+        char[] target, int targetOffset, int targetCount,
+        int fromIndex)
+    {
+        if(fromIndex >= sourceCount)
+        { // 起始位置大于等于目标字符的长度
+            return (targetCount == 0 ? sourceCount : -1); // 目标字符长度是否为0，true，原来的长度，false，-1
+        }
+        if(fromIndex < 0)// 设置从源字符串哪个位置开始查找
+        {
+            fromIndex = 0;// 设置边界
+        }
+        if(targetCount == 0)//如果目标字符长度小于0,长度为空
+        {
+            return fromIndex;
+        }
+
+        char first = target[targetOffset];// 第一个查找字符为目标字符偏移量的第一个, 我们使用的时候targetOffset 默认为0
+        int max = sourceOffset + (sourceCount - targetCount);//源字符偏移量+（源字符串长度-目标字符的长度） 最大位置。保证源字符串不越界。
+
+        for(int i = sourceOffset + fromIndex; i <= max; i++) // sourceOffset 我们看到的也是0，默认设值。fromIndex 为从源字符串哪个位置开始
+        {
+            /* Look for first character. */
+            if(source[i] != first)
+            {
+                while (++i <= max && source[i] != first)// 找到一个first字符为值，确定位置
+                    ;
+            }
+
+            /* Found first character, now look at the rest of v2 */
+            if(i <= max)//
+            {
+                int j = i + 1;
+                int end = j + targetCount - 1;// 设值找值不超过目标字符串的长度，已经找到第一个位置，所以减1
+                for(int k = targetOffset + 1; j < end && source[j] == target[k]; j++, k++)
+                    //k为目标字符串偏移targetOffset之后的第二个字符位置（上一步已经找到第一个），确定字符。
+                            // 开始找第二个字符，
+                    // 假设这里是找到的，所以j++, k++ , 如果不是source[j]==target[k],那么for跳出，执行外层for
+                    ;
+
+                if(j == end)
+                {
+                    /* Found whole string. */
+                    return i - sourceOffset;// 返回的是偏移量之后的位置
+                }
+            }
+        }
+        return -1;
+    }
+
+        public static void main(String[] args)
+    {
+        String no = "1234567890";
+        System.out.println(no.length());
+        int i = no.indexOf("",110);
+        System.out.println("i=" + i);
+    }
+```
+
+其实在indexOf这里打个断点，随便启动一个Java带main方法的程序，会发现在执行main之前都会,indexOf会被多次调用,应该是先加载了jdk里面的lib下的jar文件，用idea调试出来是可以看到路径的。
+
+另外看到indexOf的方法级别上是`static int indexOf()` 非public，private，而是默认的限定符，附一张限定符的图,[accesscontrol.html]:(http://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html)
+
+![2017-09-11-16-07-08](/images/qiniu/2017-09-11-16-07-08.png)
