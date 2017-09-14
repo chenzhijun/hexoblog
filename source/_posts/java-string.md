@@ -356,6 +356,6 @@ String中的方法是不同步的,但是String是一个final类.final类不能�
 
 其实在indexOf这里打个断点，随便启动一个Java带main方法的程序，会发现在执行main之前都会,indexOf会被多次调用,应该是先加载了jdk里面的lib下的jar文件，用idea调试出来是可以看到路径的。
 
-另外看到indexOf的方法级别上是`static int indexOf()` 非public，private，而是默认的限定符，附一张限定符的图,[accesscontrol.html]:(http://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html)
+另外看到indexOf的方法级别上是`static int indexOf()` 非public，private，而是默认的限定符，附一张限定符的图,[accesscontrol.html](http://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html)
 
-![2017-09-11-16-07-08](/images/qiniu/2017-09-11-16-07-08.png)
+![2017-09-11-16-13-20](/images/qiniu/2017-09-11-16-13-20.png)
