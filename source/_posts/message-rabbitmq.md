@@ -1,5 +1,5 @@
 ---
-title: message-rabbitmq
+title: RabbitMQ-消息中间件（一）
 date: 2017-09-15 10:13:47
 tags:
     - message
@@ -7,7 +7,7 @@ tags:
 categories: RabbitMQ
 ---
 
-## 消息中间件 RabbitMQ
+## 消息中间件 RabbitMQ (一)
 
 ### 简述
 
@@ -24,7 +24,7 @@ RabbitMQ 是一个消息中间件，类似于传统的邮局，不过RabbitMQ充
 > ps:生产者，消费者和中间件不应该在同一台宿主机上面，实际中大多数应用都不会这样做。
 
 ### "Hello World"
-
+<!--more-->
 Send.java,发布者发送消息
 
 ```java
@@ -128,7 +128,9 @@ maven仓库包：
 使用Demo的时候需要先下载安装RabbitMQ，可能还需要安装erlang，安装完成后打开网站`localhost:15672`,就可以看到rabbitMQ的管理后台了。
 
 
+参考文档：
 
+[RabbitMQ Java](http://www.rabbitmq.com/tutorials/tutorial-one-java.html)
 
 
 
