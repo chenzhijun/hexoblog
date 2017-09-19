@@ -1,5 +1,5 @@
 ---
-title: message-rabbitmq
+title: RabbitMQ-消息中间件（一）
 date: 2017-09-15 10:13:47
 tags:
     - message
@@ -7,7 +7,7 @@ tags:
 categories: RabbitMQ
 ---
 
-## 消息中间件 RabbitMQ
+## 消息中间件 RabbitMQ (一)
 
 ### 简述
 
@@ -23,9 +23,9 @@ RabbitMQ 是一个消息中间件，类似于传统的邮局，不过RabbitMQ充
 
 > ps:生产者，消费者和中间件不应该在同一台宿主机上面，实际中大多数应用都不会这样做。
 
-### Hello world
-
-首先我们准备一个发送者，发送的特性就是发送消息，所以我们要知道有哪些消息，另外消息要发送到MQ队列，所以我们还要指明是哪个队列;
+### "Hello World"
+<!--more-->
+Send.java,发布者发送消息
 
 ```java
 package me.chenzhijun;
@@ -56,7 +56,7 @@ public class Sender {
 
         //1 发送消息之前，必须先声明一个发送消息的队列，然后我们往队列里面发送消息
         channel.queueDeclare(QUEUE_NAME, false, false, false, null);// 队列声明是幂等的，它只会在不存在的时候创建
-        String message = "Hello,Rabbit,this is new Message";
+        String message = "Hello,World";
 
         channel.basicPublish("", QUEUE_NAME, null, message.getBytes());// 消息内容是一个字节数组，可以用使用任何编码
 
@@ -66,20 +66,71 @@ public class Sender {
 
         System.out.println("[x] sent:" + message);
 
-        //MQ 必须要有200M最低默认磁盘空间
-
     }
 }
 
 ```
 
-首先我们有一个连接工厂，我们对要生产的连接做一些设置，做完设置后我们就可以创建一个连接，连接创建完成后，我们就有了一个Connection，Connection包含了我们需要完成任务的api创建一个Channel，
+Receiver.java,先要声明确定建立连接，因为需要等待接收消息
+
+```java
+package me.chenzhijun;
+
+import com.rabbitmq.client.*;
+
+import java.io.IOException;
+import java.util.concurrent.TimeoutException;
+
+/**
+ * @author chen
+ * @version V1.0
+ * @date 2017/9/16
+ */
+public class Receiver {
+    private final static String QUEUE_NAME = "hello";
+
+    public static void main(String[] args) throws IOException, TimeoutException {
+
+        //1 前面的操作都是类似，都是需要链接的一些配置
+        ConnectionFactory connectionFactory = new ConnectionFactory();
+        connectionFactory.setHost("localhost");
+        Connection connection = connectionFactory.newConnection();
+        Channel channel = connection.createChannel();
+        channel.queueDeclare(QUEUE_NAME, false, false, false, null);
+
+        System.out.println("[X] receiving message");
+
+        Consumer consumer = new DefaultConsumer(channel) {
+            @Override
+            public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
+                super.handleDelivery(consumerTag, envelope, properties, body);
+                String message = new String(body, "UTF-8");
+                System.out.println("[x] Received : " + message);
+            }
+        };
+        channel.basicConsume(QUEUE_NAME,true,consumer);
+    }
+}
+```
+
+maven仓库包：
+
+```
+    <dependencies>
+        <dependency>
+            <groupId>com.rabbitmq</groupId>
+            <artifactId>amqp-client</artifactId>
+            <version>3.5.7</version>
+        </dependency>
+    </dependencies>
+```
+
+使用Demo的时候需要先下载安装RabbitMQ，可能还需要安装erlang，安装完成后打开网站`localhost:15672`,就可以看到rabbitMQ的管理后台了。
 
 
+参考文档：
 
-
-
-
+[RabbitMQ Java](http://www.rabbitmq.com/tutorials/tutorial-one-java.html)
 
 
 
