@@ -94,7 +94,8 @@ scheme: Muse
 social:
   GitHub: https://github.com/chenzhijun
   GitEE: https://git.oschina.net/chenzhijun
-  微博: http://weibo.com/3075356421
+  Weibo: http://weibo.com/3075356421
+  E-Mail: mailto:vbookchen@gmail.com
 
 # Social Links Icons
 # Icon Mapping:
@@ -124,7 +125,8 @@ social_icons:
 #links_layout: block
 #links_layout: inline
 links:
-  GitHub: http://chenzhijun.github.com/
+  陈志军的个人站: http://chenzhijun.github.com/
+  许凯的个人站: https://xkupc.github.io/
 
 # Sidebar Avatar
 # in theme directory(source/images): /images/avatar.jpg
