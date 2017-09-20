@@ -3,7 +3,7 @@ title: Java IO流
 date: 2017-09-20 16:35:43
 tags:
 	- Java
-categories: Javatags:
+categories: Java
 ---
 
 ## Java IO流
@@ -45,7 +45,7 @@ InputStream是`abstract`的，一定要注意它是一个抽象类。我们说�
 ```
 
 意思就是子类自己去实现这个方法。
-
+<!--more-->
 #### mark()
 
 ```
