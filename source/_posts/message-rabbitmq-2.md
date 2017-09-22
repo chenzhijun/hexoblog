@@ -1,5 +1,5 @@
 ---
-title: RabbitMQ-消息中间件（二）
+title: RabbitMQ-消息中间件（二）任务队列
 date: 2017-09-18 15:02:28
 tags:
     - message
