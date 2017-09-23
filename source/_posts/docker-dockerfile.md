@@ -6,7 +6,7 @@ tags:
 categories: Docker
 ---
 
-## DockerFile 文件导读
+## Dockerfile 文件导读
 
 Dockerfile 是一个包含了很多指令的文本文件，基于这些指令我们可以使用build创建一个image。
 
@@ -290,6 +290,7 @@ VOLUME /myvol
 ```
 上面的意思就是挂载一个/myvol，然后在执行的时候用`docker run -v test:/myvol`
 
+使用docker inspect可以看到“Mounts”,"Volumes".如果dockerfile指定Volume而没有`docker run -v` 那么就可以看到Mounts中会出现一个宿主机随机挂载了一个目录到VOLUME里面的指定位置。
 
 #### USER
 
@@ -331,3 +332,167 @@ RUN pwd
 #### HEALTHCHECK
 
 #### SHELL
+
+Dockerfile实例：
+
+```
+➜ tree
+.
+├── Dockerfile
+├── jar
+│   └── jar_test_file
+└── jar_outer_file
+
+```
+
+```
+FROM busybox
+ENV foo /bar
+LABEL author=chenzhijun
+RUN mkdir /myvol
+RUN echo "hello world$foo"$foo > /myvol/greeting
+VOLUME /myvol
+ADD jar* /mydir/
+EXPOSE 8080
+
+```
+
+```
+➜ docker build -t test:1.1 .
+Sending build context to Docker daemon  3.584kB
+Step 1/8 : FROM busybox
+ ---> efe10ee6727f
+Step 2/8 : ENV foo /bar
+ ---> Using cache
+ ---> d3b8b9eeff78
+Step 3/8 : LABEL author chenzhijun
+ ---> Using cache
+ ---> 050fc3d4d93d
+Step 4/8 : RUN mkdir /myvol
+ ---> Running in 52850795da36
+ ---> afd7fb49f8bf
+Removing intermediate container 52850795da36
+Step 5/8 : RUN echo "hello world$foo"$foo > /myvol/greeting
+ ---> Running in 70b44e104f41
+ ---> cbd977a40b6d
+Removing intermediate container 70b44e104f41
+Step 6/8 : VOLUME /myvol
+ ---> Running in da2e28e0effa
+ ---> 4edd7f3c690c
+Removing intermediate container da2e28e0effa
+Step 7/8 : ADD jar* /mydir/
+ ---> 13feb93f43f0
+Removing intermediate container 4bd1b0a08ef2
+Step 8/8 : EXPOSE 8080
+ ---> Running in 2185ad28d925
+ ---> 62bfe542f989
+Removing intermediate container 2185ad28d925
+Successfully built 62bfe542f989
+Successfully tagged test:1.1
+
+```
+
+docker inspect:
+```
+ docker inspect test:1.1
+[
+    {
+        "Id": "sha256:62bfe542f98957d45fada954dcbb8ced1a1d8a65e42657b98c40f88b559f690e",
+        "RepoTags": [
+            "test:1.1"
+        ],
+        "RepoDigests": [],
+        "Parent": "sha256:13feb93f43f085b44a37f6272b55f4f9bcf1b899d441f0dec83561904c8cea40",
+        "Comment": "",
+        "Created": "2017-09-19T15:23:52.690407548Z",
+        "Container": "2185ad28d9256023fdc96fad564c8c0eb699d4f6f9b09d4acabe73beeee6790c",
+        "ContainerConfig": {
+            "Hostname": "44c72a15738e",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "ExposedPorts": {
+                "8080/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "foo=/bar"
+            ],
+            "Cmd": [
+                "/bin/sh",
+                "-c",
+                "#(nop) ",
+                "EXPOSE 8080/tcp"
+            ],
+            "ArgsEscaped": true,
+            "Image": "sha256:13feb93f43f085b44a37f6272b55f4f9bcf1b899d441f0dec83561904c8cea40",
+            "Volumes": {
+                "/myvol": {}
+            },
+            "WorkingDir": "",
+            "Entrypoint": null,
+            "OnBuild": [],
+            "Labels": {
+                "author": "chenzhijun"
+            }
+        },
+        "DockerVersion": "17.06.2-ce",
+        "Author": "",
+        "Config": {
+            "Hostname": "44c72a15738e",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "ExposedPorts": {
+                "8080/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "foo=/bar"
+            ],
+            "Cmd": [
+                "sh"
+            ],
+            "ArgsEscaped": true,
+            "Image": "sha256:13feb93f43f085b44a37f6272b55f4f9bcf1b899d441f0dec83561904c8cea40",
+            "Volumes": {
+                "/myvol": {}
+            },
+            "WorkingDir": "",
+            "Entrypoint": null,
+            "OnBuild": [],
+            "Labels": {
+                "author": "chenzhijun"
+            }
+        },
+        "Architecture": "amd64",
+        "Os": "linux",
+        "Size": 1129213,
+        "VirtualSize": 1129213,
+        "GraphDriver": {
+            "Data": null,
+            "Name": "aufs"
+        },
+        "RootFS": {
+            "Type": "layers",
+            "Layers": [
+                "sha256:08c2295a7fa5c220b0f60c994362d290429ad92f6e0235509db91582809442f3",
+                "sha256:76229699c752a26051d4861c0e481d45e9353f66f181fd496a5ef39a8833fbff",
+                "sha256:02a0230b59819ae96f49a8603d5b1630cd357e140f48bf1e03811c5f002d8b5f",
+                "sha256:c916120dc28545b2869e046d28ababe83cfa76c2cb31c52e497450bfebb1aafa"
+            ]
+        }
+    }
+]
+
+```
