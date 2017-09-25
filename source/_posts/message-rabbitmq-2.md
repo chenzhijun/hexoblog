@@ -7,7 +7,7 @@ tags:
 categories: RabbitMQ
 ---
 
-## 消息中间件 RabbitMQ (二)
+## 消息中间件 RabbitMQ (二) 任务队列
 
 >第一篇中简单介绍了mq的使用，那么第二节中来了解下mq的其它内容.
 
