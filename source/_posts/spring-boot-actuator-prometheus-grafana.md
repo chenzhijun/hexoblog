@@ -8,7 +8,7 @@ categories: Java
 
 # Spring Boot 应用可视化监控
 
-> 使用spring-actuator 并且使用prometheus, grafana 做可是话视图展示
+> 使用spring-actuator 并且使用prometheus, grafana 做可视化视图展示
 
 总体过程图：
 
