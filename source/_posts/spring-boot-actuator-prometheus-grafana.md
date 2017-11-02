@@ -173,3 +173,17 @@ docker run -d --name prometheus -p 9090:9090 -v D:\chenzhijun\test\actuator\prom
 5. 最终结果
 
 ![2017-11-02-17-03-01](/images/qiniu/2017-11-02-17-03-01.png)
+
+## 源码
+
+[actuator 源码](https://gitee.com/chenzhijun/actuator)
+
+## 参考资料
+
+[SpringBoot 应用监控踩坑集锦](http://www.jianshu.com/p/ebee9a0dc15c)
+
+[Spring Boot 应用可视化监控](http://www.jianshu.com/p/7ecb57a3f326)
+
+[prometheus_started](https://prometheus.io/docs/introduction/getting_started/)
+
+[Grafana](http://docs.grafana.org/installation/docker/)
