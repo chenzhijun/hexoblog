@@ -16,6 +16,7 @@ Swarm 是目前 Docker 官方唯一指定（绑定）的集群管理工具。Doc
 
 为了方便演示跨主机网络，我们需要用到一个工具——Docker Machine，这个工具与 Docker Compose、Docker Swarm 并称 Docker 三剑客，下面我们来看看如何安装 Docker Machine：
 
+<!--more-->
 ```
 $ curl -L https://github.com/docker/machine/releases/download/v0.9.0-rc2/docker-machine-`uname -s`-`uname -m` >/tmp/docker-machine &&
     chmod +x /tmp/docker-machine &&
