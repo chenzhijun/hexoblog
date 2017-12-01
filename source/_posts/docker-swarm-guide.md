@@ -6,8 +6,6 @@ tags:
 categories: Docker
 ---
 
-> 简书上看到这篇文章，简直太棒了。原文：[左蓝 - Docker Swarm 入门](http://www.jianshu.com/p/9eb9995884a5)
-
 Swarm 在 Docker 1.12 版本之前属于一个独立的项目，在 Docker 1.12 版本发布之后，该项目合并到了 Docker 中，成为 Docker 的一个子命令。目前，Swarm 是 Docker 社区提供的唯一一个原生支持 Docker 集群管理的工具。它可以把多个 Docker 主机组成的系统转换为单一的虚拟 Docker 主机，使得容器可以组成跨主机的子网网络。
 
 ## 1. Swarm 认识
@@ -499,3 +497,6 @@ helloworld scaled to 2
 ------
 
 至此，Swarm的主要用法都已经介绍完了，主要讲述了 Swarm 集群网络的创建与部署。介绍了 Swarm 的常规应用，包括 Swarm 的服务发现、负载均衡等，然后使用 Swarm 来配置跨主机容器网络，并在上面部署应用。
+
+
+> 简书上看到这篇文章，简直太棒了。原文：[左蓝 - Docker Swarm 入门](http://www.jianshu.com/p/9eb9995884a5)
