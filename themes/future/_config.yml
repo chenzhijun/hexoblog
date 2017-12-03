@@ -421,7 +421,7 @@ facebook_comments_plugin:
 # To get your AppID visit https://vk.com/editapp?act=create
 vkontakte_api:
   enable: false
-  app_id:       #<app_id>
+  app_id:       #<app_id
   like:         true
   comments:     true
   num_of_posts: 10
@@ -437,7 +437,7 @@ rating:
 # Show number of visitors to each article.
 # You can visit https://leancloud.cn get AppID and AppKey.
 leancloud_visitors:
-  enable: true
+  enable: false 
   app_id: 3Ipv4LCq5xwYkaKUFvu27F0x-gzGzoHsz
   app_key: fAbLTc2xazR7sRtkfvQ7uIiO
 
@@ -468,7 +468,7 @@ busuanzi_count:
 
 
 # Enable baidu push so that the blog will push the url to baidu automatically which is very helpful for SEO
-baidu_push: false
+baidu_push: true
 
 # Google Calendar
 # Share your recent schedule to others via calendar page

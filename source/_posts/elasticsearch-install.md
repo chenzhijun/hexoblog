@@ -1,5 +1,5 @@
 ---
-title: ElasticSearch 安装 (单机单节点/单机多节点)
+title: ElasticSearch 安装 (单机单节点/伪集群)
 date: 2017-12-01 15:27:53
 tags:
 	- Elasticsearch
@@ -19,7 +19,9 @@ ElasticSearch(ES) 现在已经随着技术发展越来越火爆了。它基于Lu
 
 ### 安装
 
-ES 下载解压后，配置文件主要在`config`目录下，包含文件：`elasticsearch.yml`,`jvm.options`,`log4j2.properties`。这三个文件分别对应`ES配置`，`JVM配置`，`ES日志配置`。我们这里只讨论`elasticsearch.yml`的配置，其他的暂时不论。
+ES 下载解压后，配置文件主要在`config`目录下，
+包含文件：`elasticsearch.yml`,`jvm.options`,`log4j2.properties`。
+这三个文件分别对应`ES配置`，`JVM配置`，`ES日志配置`。我们这里只讨论`elasticsearch.yml`的配置，其他的暂时不论。
 
 ### 单机单节点
 
