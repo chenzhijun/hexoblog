@@ -13,8 +13,10 @@ categories: ELK
 
 1. ubuntu 16
 2. jdk 1.8
+3. elasticesearch 6.0, kibana 6.0, logstash 6.0, filebeat 6.0
 
 > 我也在windows10下安装过，win10下只需要修改filebeat的文件路径配置就可以了。
+
 ### 概念介绍
 
 elastic提供了非常多的工具，官方称为Elastic Stack。它提供了一些[解决方案](https://www.elastic.co/cn/solutions)。我们用到的就是其中Stack中的部分工具
