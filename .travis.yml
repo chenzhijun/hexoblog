@@ -30,8 +30,8 @@ after_script:
     - git config user.email "522858454@qq.com"
     - git add .
     - git commit -am "Travis CI Auto Builder"
-    - git remote rm origin
-    - git remote add origin ${GH_REF}
+    # - git remote rm origin
+    # - git remote add origin ${GH_REF}
     # - git push --force --quiet "${GITHUB_TOKEN}@${GH_REF}" master:master # GH_TOKEN是在Travis中配置token的名称
     - git push origin master 
 branches:
