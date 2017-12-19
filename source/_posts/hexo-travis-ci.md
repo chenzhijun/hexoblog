@@ -16,3 +16,5 @@ categories: Hexo
 先介绍下我的博客环境，我用了两个repo，一个是存博客源码的blog.git。另一个也就是用来做git pages的chenzhijun.github.com.git。然后我用了travis-ci,用git登陆的。
 
 ## 实际操作
+
+其实就是将生成的目录public下的所有文件当作了chenzhijun.github.com.git库下面的文件。
