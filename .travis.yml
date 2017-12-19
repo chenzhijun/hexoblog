@@ -18,20 +18,20 @@ script:
     - hexo g # 生成
 
 after_script:
-    - git clone https://${GH_REF} pub_web
+    - git clone ${GH_REF} pub_web
+    # - cd pub_web
+    # - git checkout master
+    # - cd ../
+    - mv public/* pub_web/
     - cd pub_web
-    - git checkout master
-    - cd ../
-    - mv .deploy_git/* ./pub_web/
-    - cd ./pub_web
     - git config user.name "chenzhijun"
     - git config user.email "522858454@qq.com"
     - git add .
     - git commit -m "Travis CI Auto Builder"
-    - git push --force --quiet "https://${GITHUB_TOKEN}@${GH_REF}" master:master # GH_TOKEN是在Travis中配置token的名称
+    - git push --force --quiet "${GITHUB_TOKEN}@${GH_REF}" master:master # GH_TOKEN是在Travis中配置token的名称
 branches:
     only:
         - master #只监测hexo分支，hexo是我的分支的名称，可根据自己情况设置
 env:
     global:
-        - GH_REF: github.com/chenzhijun/chenzhijun.github.com.git #设置GH_REF，注意更改yourname
+        - GH_REF: https://github.com/chenzhijun/chenzhijun.github.com.git #设置GH_REF，注意更改yourname
