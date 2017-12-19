@@ -22,7 +22,7 @@ after_script:
     - cd pub_web
     - git checkout master
     - cd ../
-    - cp .deploy_git/* ./pub_web/
+    - mv .deploy_git/* ./pub_web/
     - cd ./pub_web
     - git config user.name "chenzhijun"
     - git config user.email "522858454@qq.com"
