@@ -30,8 +30,8 @@ categories: Hexo
 ### 环境介绍
 
 先介绍下我的博客环境，我用了两个repo:
-一个是存博客源码的blog.git,
-另一个也就是用来做git pages的chenzhijun.github.com.git。
+一个是存博客源码的`blog.git`,
+另一个也就是用来做站点发布的`chenzhijun.github.com.git`。
 
 > 网上很多人喜欢用一个库，然后切换分支的做法。之前我也弄过，不过后来发现我经常弄错分支。反正repo不要钱，就无所谓，分开吧。其实就是懒。总之，自己爽就好。
 <!--more-->
