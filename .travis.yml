@@ -20,7 +20,7 @@ script:
 after_script:
     - git clone ${GH_REF} pub_web
     - ls pub_web
-    - rm -rf pub_web/*
+    # - rm -rf pub_web/*
     - cp -rf public/* pub_web/
     - ls pub_web
     - cd pub_web
