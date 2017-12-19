@@ -19,15 +19,13 @@ script:
 
 after_script:
     - git clone ${GH_REF} pub_web
-    # - cd pub_web
-    # - git checkout master
-    # - cd ../
-    - mv public/* pub_web/
+    - ls pub_web
+    - cp -rf public/* pub_web/
     - cd pub_web
     - git config user.name "chenzhijun"
     - git config user.email "522858454@qq.com"
     - git add .
-    - git commit -m "Travis CI Auto Builder"
+    - git commit -am "Travis CI Auto Builder"
     - git push --force --quiet "${GITHUB_TOKEN}@${GH_REF}" master:master # GH_TOKEN是在Travis中配置token的名称
 branches:
     only:
