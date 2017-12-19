@@ -35,6 +35,7 @@ categories: Hexo
 
 > 网上很多人喜欢用一个库，然后切换分支的做法。之前我也弄过，不过后来发现我经常弄错分支。反正repo不要钱，就无所谓，分开吧。其实就是懒。总之，自己爽就好。
 <!--more-->
+
 ### 实际操作
 
 其实就是将生成的目录public下的所有文件当作了chenzhijun.github.com.git库下面的文件。
@@ -86,7 +87,7 @@ after_script:
     - git config user.name "username"
     - git config user.email "email@address.com"
     - git add .
-    - git commit -am "Travis CI Auto Builder :$(date '+%Y-%m-%d %H:%M:%S')"
+    - git commit -am "Travis CI Auto Builder :$(date '+%Y-%m-%d %H:%M:%S' -d '+8 hour')" # 零时区，+8小时
     - git push origin master 
 branches:
     only:
