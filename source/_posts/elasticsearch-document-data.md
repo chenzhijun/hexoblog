@@ -2,6 +2,8 @@
 title: elasticsearch-document-data
 date: 2017-12-19 09:29:04
 tags:
+	  - Elasticsearch
+categories: Elasticsearch
 ---
 
 ## 什么是文档
