@@ -15,6 +15,9 @@ categories: ELK
 1. 收集Java日志文件，并且根据文件的不同将日志分类，比如：订单日志，客户日志等。
 2. 日志文件多行处理
 
+## 总体架构图
+
+![2017-12-28-11-23-36](/images/qiniu/2017-12-28-11-23-36.png)
 
 ## 准备镜像
 
@@ -90,7 +93,7 @@ filter {
 		}
    }
 
-   if [fields][doc_type] == 'customer' { # 这里写两个一样的grok，实际上可能出现多种不同的日志格式，这里做个提示而已
+   if [fields][doc_type] == 'customer' { # 这里写两个一样的grok，实际上可能出现多种不同的日志格式，这里做个提示而已,当然如果是相同的格式，这里可以不写的
     grok {
 			match => { "message" => "%{TIMESTAMP_ISO8601:timestamp} %{LOGLEVEL:level} %{JAVALOGMESSAGE:msg}" }
 		}
@@ -187,7 +190,7 @@ filebeat.prospectors:
   fields:
     doc_type: customer
 output.logstash: # 输出地址
-  hosts: ["logstash:5044"]
+  hosts: ["logstash:5043"]
 
 ```
 
@@ -202,15 +205,19 @@ output.logstash: # 输出地址
 启动docker版本的logstash：
 
 ```shell
-docker run --rm -it --name logstash --link elasticsearch  -v ~/elk/yaml/logstash.conf:/usr/share/logstash/pipeline/default.yml logstash
+docker run --rm -it --name logstash --link elasticsearch -d -v ~/elk/yaml/logstash.conf:/usr/share/logstash/pipeline/logstash.conf logstash
 ```
 
 启动filebeat，将文件挂载到容器中，这里也可以有其它的处理方法，你可以根据自己的需求来。
 
 ```shell
-docker run --name filebeat --link logstash -v ~/elk/yaml/filebeat.yml:/usr/share/filebeat/filebeat.yml -v ~/elk/logs/order/:/home/user/elk/logs/order/ -v ~/elk/logs/customer/:/home/user/elk/logs/customer/ filebeat
+docker run --name filebeat -d --link logstash -v ~/elk/yaml/filebeat.yml:/usr/share/filebeat/filebeat.yml -v ~/elk/logs/:/home/logs/ filebeat
 ```
 
 最后记得在kibana里面建立索引(create index)的时候，默认使用的是logstash，而我们是自定义的doc_type,所以你需要输入order\*,customer\*这样就可以建立两个索引了。
 
 之后就可以在kibana的Discovery里面看到你配置的了
+
+> 如果你直接用我的log，请将时间稍微改一下，2017-12-26改为当天实验年月。
+
+上面的命令我都自己实践过，是可以用的，注意下-v参数挂载的几个本地盘的地址。还有filebeat收集的地址。
