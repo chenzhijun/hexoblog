@@ -4,9 +4,9 @@ date: 2017-05-09 22:10:01
 tags:
 	- Vim
 categories: Linux
-
 ---
-## vim使用命令
+
+# vim使用命令
 
 :help <command>
 :set nu
