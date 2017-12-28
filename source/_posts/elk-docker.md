@@ -221,3 +221,5 @@ docker run --name filebeat -d --link logstash -v ~/elk/yaml/filebeat.yml:/usr/sh
 > 如果你直接用我的log，请将时间稍微改一下，2017-12-26改为当天实验年月。
 
 上面的命令我都自己实践过，是可以用的，注意下-v参数挂载的几个本地盘的地址。还有filebeat收集的地址。
+
+配置文件地址仓库：[使用Docker搭建ELK日志系统](https://github.com/chenzhijun/elk)
