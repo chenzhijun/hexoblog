@@ -222,4 +222,4 @@ docker run --name filebeat -d --link logstash -v ~/elk/yaml/filebeat.yml:/usr/sh
 
 上面的命令我都自己实践过，是可以用的，注意下-v参数挂载的几个本地盘的地址。还有filebeat收集的地址。
 
-配置文件地址仓库：[使用Docker搭建ELK日志系统](https://github.com/chenzhijun/elk)
+配置文件地址仓库：[使用Docker搭建ELK日志系统](https://github.com/chenzhijun/elk) ，仓库配有docker-compose.yml文件在根目录下直接运行`docker-compose up` 就可以看到实际效果了(记得改下日志时间)。
