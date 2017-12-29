@@ -49,7 +49,7 @@ sysctl -w vm.max_map_count=262144
 之后我们执行命令，暴露容器的9200，9300端口，方便我们在其它集器上可以通过类似head插件去做es索引的操作等。执行命令为：
 
 ```shell
-docker run -p 127.0.0.1:9200:9200 -p 9300:9300 --name elasticsearch -e "discovery.type=single-node" elasticsearch
+docker run -p 9200:9200 -p 9300:9300 --name elasticsearch -e "discovery.type=single-node" elasticsearch
 ```
 
 > 如果实际使用中，可能需要设置集群等操作。因实际情况而定。如果你需要存储历史数据，那么就可能需要将data目录保存到本地，使用-v，或者mount参数挂载本地一个目录。
@@ -205,7 +205,7 @@ output.logstash: # 输出地址
 启动docker版本的logstash：
 
 ```shell
-docker run --rm -it --name logstash --link elasticsearch -d -v ~/elk/yaml/logstash.conf:/usr/share/logstash/pipeline/logstash.conf logstash
+docker run -it --name logstash --link elasticsearch -d -v ~/elk/yaml/logstash.conf:/usr/share/logstash/pipeline/logstash.conf logstash
 ```
 
 启动filebeat，将文件挂载到容器中，这里也可以有其它的处理方法，你可以根据自己的需求来。
