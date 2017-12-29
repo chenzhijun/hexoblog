@@ -82,7 +82,7 @@ filebeat是一个轻量级收集器，我们使用它来收集Java日志，将�
 ```conf
 input {
   beats {
-    host => "localhost"
+    #host => "localhost"
     port => "5043"
   }
 }
