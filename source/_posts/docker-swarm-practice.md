@@ -204,4 +204,10 @@ docker network --help;
 docker run ;
 
 docker --help;
+
+       docker service create --name warehouse1     --network springcloud-overlay     
+       --mount type=bind,source=/home/user/jar/notice/warehouse-server.jar,destination=/user/share/jar/app.jar     
+       --env EUREKA_SERVER_ADDRESS=http://eureka1:8761/eureka/,http://eureka2:8761/eureka/     
+       --env MYSQL_SERVER_ADDRESS=mysql:3306     
+       -p :30021     java:8-jre-alpine java -jar /user/share/jar/app.jar --cacheType=single
 ```
