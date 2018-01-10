@@ -80,39 +80,34 @@ output {
 
 我们只对ERROR级别的日志进行发送邮件，这里用了if条件语句。如果你看过之前的两篇文章，我想这里你是很容易就能弄懂的。当然这种方式不一定很好，如果你有更好的想法，欢迎交流。
 
-<!-->
+<!--
 
 ```conf
 input {
   beats {
     host => "localhost"
-    port => "5043"
+    port => "5044"
   }
 }
 
 filter {
-   if [fields][doc_type] == 'order' {
     grok {
 			match => { "message" => "%{TIMESTAMP_ISO8601:timestamp} %{LOGLEVEL:level} %{JAVALOGMESSAGE:msg}" }
 		}
-   }
 }
 
 output {
   stdout { codec => rubydebug }
-  elasticsearch {
-        hosts => ["localhost:9200"]
-        index => "%{[fields][doc_type]}-%{+YYYY.MM.dd}"
-    }
 
   if "ERROR" == [level] or [message] =~ /xception/ {
     email {
-        to => "522858454@qq.com,chenzj@ap-ec.cn"
-        cc => "email_chenzhijun@163.com"
+        to => "xukai@ap-ec.cn,wangfei@ap-ec.cn,xiaoxq@ap-ec.cn,zhangchi@ap-ec.cn,shangxw@ap-ec.cn,guisw@ap-ec.cn,chenzj@ap-ec.cn"
+        #to => "chenzj@ap-ec.cn"
+        cc => "noreply_czj@163.com"
         via => "smtp"
-        subject => "请注意: %{[fields][doc_type]}项目可能出现异常"
+        subject => "请注意项目可能出现异常,异常文件:%{source}"
         # htmlbody => "消息主体：%{message}"
-        body => "日志信息:\n%{message}\n\n请在Kibana查看详细信息。\n\n\n\n\n-----------------------------华丽的分割线---------------------\n这是系统发送邮件，请勿回复。\n如有需要请联系chenzhijun。chenzj@ap-ec.cn"
+        body => "日志信息:\n%{message}\n\n请在日志文件中查看详细信息,机器地址：%{[fields][server_ip]}。\n\n\n\n\n-----------------------------华丽的分割线---------------------\n这是系统发送邮件，请勿回复。\n如有需要请联系chenzhijun。chenzj@ap-ec.cn"
         from => "noreply_czj@163.com"
         address => "smtp.163.com"
         username => "noreply_czj@163.com"
@@ -121,4 +116,31 @@ output {
   }
 }
 ```
-<-->
+
+```yml
+filebeat.prospectors:
+
+# Each - is a prospector. Most options can be set at the prospector level, so
+# you can use different prospectors for various configurations.
+# Below are the prospector specific configurations.
+
+- type: log
+
+  # Change to true to enable this prospector configuration.
+  enabled: true
+
+  # Paths that should be crawled and fetched. Glob based paths.
+  paths:
+    - /home/cncsen/*/*.log
+    #- /home/cncsen/customer/*/*.log
+    #- /home/cncsen/contract/*.log
+    #- c:\programdata\elasticsearch\logs\*
+  multiline:
+      pattern: ^\d{4}
+      negate: true
+      match: after
+  fields:
+    server_ip: 221
+
+```
+-->
