@@ -113,6 +113,12 @@ output {
         username => "noreply_czj@163.com"
         password => "noreplyczj123"
     }
+    http {
+        url => "https://oapi.dingtalk.com/robot/send?access_token=3f39f66edc27dbd5c8206183741c372ec459b653af0cd90841edffbbb872cf1b"
+        content_type => "application/json"
+        http_method => "post"
+        message => '{"msgtype": "text","text": {"content": "%{message}"}}'
+    }
   }
 }
 ```
