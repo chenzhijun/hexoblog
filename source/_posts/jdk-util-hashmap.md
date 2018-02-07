@@ -26,7 +26,7 @@ HashMap的实现是非线程安全的。在多线程的环境下，必须在外�
 map的iterators方法是fail-fast的。在iterator创建之后，如果map的结构被修改了，除了iterator的remove方法，iterator会抛出ConcurrentModificationException异常。所以在多线程环境下进行修改，iterator会快速的返回失败。不过也得注意在非同步环境下，迭代器的fail-fast不能得到保证。迭代器抛出这个异常一个非常好的功能，但是不应该依赖它来写程序，如果出现异常那么就应该说明程序有bug。
 
 jdk的源码里面，介绍的非常详细。真的很详细。
-
+<!--more-->
 ## 分块介绍
 
 之前说过map是非线程安全的，这节就单纯的聊一下非线程安全下的map。
@@ -377,52 +377,159 @@ containsValue(Object)的源码中我们可以看到，基本类似，也是循�
 
 #### 常用方法keySet(),values(),entrySet()
 
-打开源码看看keySet()，之前我一直就是用它来获取key，然后遍历map：
+这几个方法是指代的键,值遍历，以及键值对遍历。
+
+#### 常用方法size()，内部方法resize()
+
+这里就需要主要注意resize()方法是default的，也就是同一个包下面才可以调用。
+
+size()方法就是为了获取到map里面真实的实例数量，返回的是size属性。
+
+resize()方法在每次达到极限界值的时候会自动调用：
 
 ```java
-    public Set<K> keySet() {
-        Set<K> ks = keySet;
-        if (ks == null) {
-            ks = new KeySet();
-            keySet = ks;
+    void resize(int newCapacity) {
+        //获取原始表的容量值
+        Entry[] oldTable = table;
+        int oldCapacity = oldTable.length;
+        //原表容量值等于最大值，可以直接返回了。
+        if (oldCapacity == MAXIMUM_CAPACITY) {
+            threshold = Integer.MAX_VALUE;
+            return;
         }
-        return ks;
+
+        // 新表
+        Entry[] newTable = new Entry[newCapacity];
+        //填充新表数据
+        transfer(newTable, initHashSeedAsNeeded(newCapacity));
+        //替换旧表内容
+        table = newTable;
+        threshold = (int)Math.min(newCapacity * loadFactor, MAXIMUM_CAPACITY + 1);
     }
 
-    final class KeySet extends AbstractSet<K> {
-        public final int size()                 { return size; }
-        public final void clear()               { HashMap.this.clear(); }
-        public final Iterator<K> iterator()     { return new KeyIterator(); }
-        public final boolean contains(Object o) { return containsKey(o); }
-        public final boolean remove(Object key) {
-            return removeNode(hash(key), key, null, false, true) != null;
-        }
-        public final Spliterator<K> spliterator() {
-            return new KeySpliterator<>(HashMap.this, 0, -1, 0, 0);
-        }
-        public final void forEach(Consumer<? super K> action) {
-            Node<K,V>[] tab;
-            if (action == null)
-                throw new NullPointerException();
-            if (size > 0 && (tab = table) != null) {
-                int mc = modCount;
-                for (int i = 0; i < tab.length; ++i) {
-                    for (Node<K,V> e = tab[i]; e != null; e = e.next)
-                        action.accept(e.key);
+    void transfer(Entry[] newTable, boolean rehash) {
+        int newCapacity = newTable.length;
+        for (Entry<K,V> e : table) {
+            while(null != e) {
+                Entry<K,V> next = e.next;
+                if (rehash) {
+                    e.hash = null == e.key ? 0 : hash(e.key);
                 }
-                if (modCount != mc)
-                    throw new ConcurrentModificationException();
+                int i = indexFor(e.hash, newCapacity);
+                e.next = newTable[i];
+                newTable[i] = e;
+                e = next;
             }
         }
     }
 ```
 
-可以看到，如果ks为null，那么
+#### Entry,hash,hashCode(),size,capacity,threshold
 
-#### size()
+前面我们讲过一些常用的方法，put，get，size等，这些方法其实都是有一定关联的，put前是不是应该先判断容量是否够？不够该怎样，够该怎样。其实就是这样，就像流程图一样，只不过在具体的实现上面我们会有不同的方式。使用不同的数据结构来做优化。
 
-#### Entry，hash，hashCode（）
+这里我们需要讲一下Entry，hash，hashCode(),size,capacity,threshold他们代表的意义，以及作用。
 
+如果说map是存储键值对，那么键是怎么存？值又是怎么存？两者怎么关联起来了？回过头我们思考这些问题，最好的方式就是看看put方法是怎么运作的：
 
+jdk1.7:
 
+```java
+    public V put(K key, V value) {
+       // 判断空表，然后扩容
+        if (table == EMPTY_TABLE) {
+            inflateTable(threshold);
+        }
+        //判断nullkey
+        if (key == null)
+            return putForNullKey(value);
 
+        // 重点。这里计算了key的hash
+        int hash = hash(key);
+        int i = indexFor(hash, table.length);
+        for (Entry<K,V> e = table[i]; e != null; e = e.next) {
+            Object k;
+            if (e.hash == hash && ((k = e.key) == key || key.equals(k))) {
+                V oldValue = e.value;
+                e.value = value;
+                e.recordAccess(this);
+                return oldValue;
+            }
+        }
+
+        modCount++;
+        addEntry(hash, key, value, i);
+        return null;
+    }
+
+    /**
+     * Retrieve object hash code and applies a supplemental hash function to the
+     * result hash, which defends against poor quality hash functions.  This is
+     * critical because HashMap uses power-of-two length hash tables, that
+     * otherwise encounter collisions for hashCodes that do not differ
+     * in lower bits. Note: Null keys always map to hash 0, thus index 0.
+     */
+     /**
+     获取hash 值，对于hash结果进行重写，主要是为了防止低质量的hash计算方法，hashmap使用2的幂方长度的hash表，在低位容易遇到同样的hashcode冲突 
+     Null 为key的hash是0
+     */
+    final int hash(Object k) {
+        int h = hashSeed;
+        if (0 != h && k instanceof String) {
+            return sun.misc.Hashing.stringHash32((String) k);
+        }
+
+        h ^= k.hashCode();
+
+        // This function ensures that hashCodes that differ only by
+        // constant multiples at each bit position have a bounded
+        // number of collisions (approximately 8 at default load factor).
+        h ^= (h >>> 20) ^ (h >>> 12);
+        return h ^ (h >>> 7) ^ (h >>> 4);
+    }
+
+    void addEntry(int hash, K key, V value, int bucketIndex) {
+        if ((size >= threshold) && (null != table[bucketIndex])) {
+            resize(2 * table.length);
+            hash = (null != key) ? hash(key) : 0;
+            bucketIndex = indexFor(hash, table.length);
+        }
+
+        createEntry(hash, key, value, bucketIndex);
+    }
+
+    void createEntry(int hash, K key, V value, int bucketIndex) {
+        Entry<K,V> e = table[bucketIndex];
+        table[bucketIndex] = new Entry<>(hash, key, value, e);
+        size++;
+    }
+
+```
+
+实际上它使用的是的是`Entry[] table` 数组，而Entry是一个链表的形式。 
+
+```java
+    static class Entry<K,V> implements Map.Entry<K,V> {
+        final K key;
+        V value;
+        Entry<K,V> next;
+        int hash;
+    }
+```
+
+hashCode方法是一个本地方法，hash算法实在key的hashCode上计算的，这里有两篇文章，感觉很好，我就不敢多说了：
+http://www.cnblogs.com/xiongpq/p/6175702.html，http://blog.csdn.net/fjse51/article/details/53811465；
+
+size是指的map实际中存在了多少键值对，也就是实际的实例；
+
+capacity是指这个map的总容量；
+
+threshold是一个极限值，当达到了size达到了极限值的时候就会自动扩容(2的幂次方)，threshold的计算为capacity*load factor。
+
+在jdk8中感觉变化太大了，下次要单独讲讲jdk8。另外还需要讲解一下在多线程下的map该怎么操作。
+
+## 疑问待解决
+
+1：在put的时候，如果是重复键，再第二次的时候就只是替换了，那么entry链表有什么用？为什么这么设计？
+
+2：hash的计算方式？hashCode计算方式，什么是hashCode？那些位运算是怎么做的？
