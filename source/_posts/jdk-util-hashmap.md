@@ -26,7 +26,9 @@ HashMap的实现是非线程安全的。在多线程的环境下，必须在外�
 map的iterators方法是fail-fast的。在iterator创建之后，如果map的结构被修改了，除了iterator的remove方法，iterator会抛出ConcurrentModificationException异常。所以在多线程环境下进行修改，iterator会快速的返回失败。不过也得注意在非同步环境下，迭代器的fail-fast不能得到保证。迭代器抛出这个异常一个非常好的功能，但是不应该依赖它来写程序，如果出现异常那么就应该说明程序有bug。
 
 jdk的源码里面，介绍的非常详细。真的很详细。
+
 <!--more-->
+
 ## 分块介绍
 
 之前说过map是非线程安全的，这节就单纯的聊一下非线程安全下的map。
