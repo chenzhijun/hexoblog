@@ -109,6 +109,7 @@ social_icons:
   # Icon Mappings.
   # KeyMapsToSocialItemKey: NameOfTheIconFromFontAwesome
   GitHub: github
+  GitEE: git
   E-Mail: envelope
   Google: google
   Twitter: twitter
