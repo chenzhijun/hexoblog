@@ -122,9 +122,9 @@ social_icons:
   Weibo: weibo
 
 # Blog rolls
-#links_title: Links
-#links_layout: block
-#links_layout: inline
+links_title: 推荐阅读
+# links_layout: block
+links_layout: inline
 links:
   陈志军的个人站: http://chenzhijun.github.com/
   许凯的个人站: https://xkupc.github.io/
