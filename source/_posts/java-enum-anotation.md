@@ -1,11 +1,11 @@
 ---
-title: Java 枚举和注解小总结
+title: Java 枚举和注解总结
 date: 2018-03-22 22:38:32
 tags: Java
 categories: Java
 ---
 
-# Java 枚举和注解小小总结
+# Java 枚举和注解总结
 
 ## 枚举
 
