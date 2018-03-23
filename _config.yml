@@ -77,7 +77,8 @@ deploy:
 
 # baidu_anlytics
 # baidu_analytics: dafb34b1aebf0d336e35d80a21509a24
-baidu_analytics: d05a9c3ba0ce3bcaebf22ef5ba8b3109
+#baidu_analytics: d05a9c3ba0ce3bcaebf22ef5ba8b3109
+baidu_analytics: 64f9df4705290b3eaeaf10145b170a11
 
 jiathis: true
 avatar: /images/avatar.jpg
