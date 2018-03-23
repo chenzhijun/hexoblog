@@ -3,6 +3,7 @@ title: Java 枚举和注解总结
 date: 2018-03-22 22:38:32
 tags: Java
 categories: Java
+copyright: true
 ---
 
 # Java 枚举和注解总结
