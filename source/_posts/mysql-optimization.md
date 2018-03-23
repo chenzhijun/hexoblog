@@ -3,6 +3,7 @@ title: 数据库查询优化
 date: 2018-03-12 22:16:35
 tags: MySQL
 categories: 数据库
+copyright: true
 ---
 
 # 数据库查询优化
@@ -105,3 +106,4 @@ order by Total_R desc;
 
 #### 索引优化实例
 
+链接地址：[http://www.chenzhijun.me/2018/03/23/mysql-optimization-index/](http://chenzhijun.me/2018/03/23/mysql-optimization-index/)
