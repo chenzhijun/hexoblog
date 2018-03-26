@@ -7,7 +7,7 @@ categories: Java
 
 # Java 事务处理（包括spring事务管理）
 
-## JDBC 的事务出路
+## JDBC 的事务处理
 
 Java 中的事务处理有三部分：
 
@@ -88,3 +88,17 @@ DriverManager--> Connection --> Statement --> ResultSet --> ResultSetMetaData。
 
 手受了伤，一个手打字不便。稍等，别忘记了。记录到
 gtd里面去
+
+今日为2018年3月26日
+
+spring 事务管理有以下一些有点<摘自官网文档16节 Transaction Management>：
+
+1. 接口一致性编程模型，适用于Java Transaction API(JTA)，JDBC，Hibernate，Java Persistence API(JPA),Java Data Objects(JDO)
+2. 支持声明式事务管理
+3. 编程式事务api接口简单
+4. 与Spring的数据访问抽象的完美集成
+
+第一节还有全局事务管理和本地事务管理。还看到了EJB CMT（Container Managed Transaction）.Spring 事务抽象接口为PlatformTransactionManager接口，这个是用到了策略模式，可以看到传递transactionStatus为参数。
+[2018-03-26-20-18-37](/images/qiniu/2018-03-26-20-18-37.png)
+
+很多英文没看懂，明天继续啃。
