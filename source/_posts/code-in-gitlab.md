@@ -1,10 +1,16 @@
 ---
-title: gitlab 安装与配置
+title: gitlab 安装与配置（一）
 copyright: true
 date: 2018-03-30 23:28:38
 tags: gitlab
 categories: git
 ---
+
+很多公司都是使用的 svn 来管理代码，其实我感觉 git 肯定是未来的潮流。最近闲暇时间，在公司搭建了一个 GitLab ，正好可以记录一下。
+
+> gitlab 的搭建环境推荐使用 >=4G 内存
+
+
 
 ## 使用 Docker 部署 gitlab
 
@@ -23,7 +29,7 @@ sudo docker run --detach \
     --volume /srv/gitlab/data:/var/opt/gitlab \
     gitlab/gitlab-ce:latest
 ```
-一个gitlab就搭建好了。默认的帐号为root。
+一个gitlab就搭建好了。**默认的帐号为`root`**。
 
 ### 配置邮件服务
 
@@ -33,25 +39,36 @@ sudo docker run --detach \
 sudo docker exec -it gitlab vi /etc/gitlab/gitlab.rb
 ```
 
+如果你是用的docker方式，看上面的命令，可以编辑本地目录`/srv/gitlab/config/gitlab.rb`也是可以的，不过需要在docker容器里面进行配置重加载。
+
 安装邮件的文档：[配置smtp]](https://docs.gitlab.com/omnibus/settings/smtp.html#doc-nav)
 
-```properties
-gitlab_rails['smtp_enable'] = true;
-gitlab_rails['smtp_address'] = 'localhost';
-gitlab_rails['smtp_port'] = 25;
-gitlab_rails['smtp_domain'] = 'localhost';
-gitlab_rails['smtp_tls'] = false;
-gitlab_rails['smtp_openssl_verify_mode'] = 'none'
-gitlab_rails['smtp_enable_starttls_auto'] = false
-gitlab_rails['smtp_ssl'] = false
-gitlab_rails['smtp_force_ssl'] = false
-gitlab_rails['smtp_authentication'] = "login"
+贴一份在实际中使用的邮件配置：
+
+```s
+gitlab_rails['gitlab_email_enabled'] = true
+gitlab_rails['gitlab_email_from'] = 'name-gitlab@company.com'
+gitlab_rails['gitlab_email_display_name'] = 'gitlab邮件通知'
+gitlab_rails['smtp_enable'] = true
+gitlab_rails['smtp_address'] = "smtp.mxhichina.com"
+gitlab_rails['smtp_port'] = 465
+gitlab_rails['smtp_user_name'] = "name-gitlab@company.com"
+gitlab_rails['smtp_password'] = "email-password"
+#gitlab_rails['smtp_domain'] = "ap-ec.cn"
+gitlab_rails['smtp_authentication'] = "login" # 认证的方式
+gitlab_rails['smtp_enable_starttls_auto'] = true
+gitlab_rails['smtp_tls'] = true
+
+user['git_user_email'] = "name-gitlab@company.com"
 ```
 
+安装完邮件后进入到容器中：`docker exec -ti gitlab bash`，之后使用`gitlab-ctl reconfigure`进行配置重加载，加载完成后需要进行测试：`gitlab-rails console`
 
-<!-->
-gitlab 导入 svn
+```shell
+Notify.test_email('test-email-name@company.com', 'Message Subject', 'Message Body').deliver_now
+```
 
-git 命令行修改登录账户和密码
-<-->
+输入上面的命令如果有新邮件收到，那么邮箱smtp就配置成功。
+
+> 如果smtp配置成功，但是注册的时候还是没有邮件发送通知，那么重启一下容器。
 
