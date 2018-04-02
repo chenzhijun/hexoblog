@@ -6,7 +6,7 @@ tags: gitlab
 categories: git
 ---
 
-## 登陆页面于LOGO自定义
+## 登陆页面与LOGO自定义
 
 ![2018-04-02-13-53-17](/images/qiniu/2018-04-02-13-53-17.png)
 
