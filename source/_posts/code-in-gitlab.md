@@ -31,6 +31,8 @@ sudo docker run --detach \
 ```
 一个gitlab就搭建好了。**默认的帐号为`root`**。
 
+<!--more-->
+
 ### 配置邮件服务
 
 在gitlab的配置目录有个文件：`/etc/gitlab/gitlab.rb`，编辑这个文件。

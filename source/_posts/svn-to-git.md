@@ -24,6 +24,7 @@ categories: git
 ```shell
 git remote add origin http://gitlab.xxx.com/xxxgroup/_CJ208_Noe.git
 ```
+<!--more-->
 
 推送过程记得使用`root`管理：
 
