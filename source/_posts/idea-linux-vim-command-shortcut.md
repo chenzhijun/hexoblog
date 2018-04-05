@@ -12,7 +12,7 @@ categories: All
 
 最常用的肯定是 find action :`ctrl shift A`，这简直就是神器，如果忘记快捷键，尝试使用这个，然后输入快捷键的功能名称就有可能找到相应 功能了。
 
-1. idea 弹出当前类里面的方法框：`ctrl o`, 如果还要查看属性：`ctrl F12`
+1. idea 弹出当前类里面的方法框：`ctrl o`, 类结构图，`file structure`：`ctrl F12`
 
 2. 跳转： navigate -> back/forward; navigate -> last edit location/next edit location
 
@@ -66,6 +66,14 @@ categories: All
 20. 本地修改记录：show history
 21. 打本地标签：put label，类似 commit
 22. 在当前目录新建文件：`ctrl alt insert`
+23. 文件复制：`F5`
+24. 文件移动：`F6`
+25. 复制文件全路径：`ctrl shift C`
+26. 复制文件名：`ctrl shift alt C`
+27. 选择复制的历史数据：`ctrl shift V`
+28. maven 依赖图，右键maven->show dependencies：`ctrl shift alt u`
+29. 查看当前类的继承关系，hierarchy class ：`ctrl H`
+30. 方法调用，call hierarchy，`ctrl alt H`
 ## idea 神奇操作：
 
 ### live templates
