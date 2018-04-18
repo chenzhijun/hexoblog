@@ -5,9 +5,7 @@ date: 2018-04-18 22:34:13
 tags: 
     - Rancher
     - Docker
-categories: 
-    - 容器
-    - Docker
+categories: Docker
 ---
 
 # Rancher 体验
