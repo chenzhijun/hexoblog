@@ -137,3 +137,7 @@ postfix 是idea预置的，无法增加，使用`ctrl shift a`输入“postfix�
 `sonar lint`，
 `alibaba java code guide`
 `emacsidea`: 使用`ctrl + J` 然后再输入想查找的字符，就可以快速定位了，在keymap中修改acejumpworld。
+
+## VScode 快捷键
+
+`ctrl k` 之后按下 `v`，打开实时预览。
