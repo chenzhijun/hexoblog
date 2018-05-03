@@ -68,3 +68,6 @@ grafana的代理需要在`default.ini`中配置root_url:`root_url = %(protocol)s
 
 ![2018-05-03-13-54-16](/images/qiniu/2018-05-03-13-54-16.png)
 
+## 参考资料
+
+[Running Grafana behind a reverse proxy](http://docs.grafana.org/installation/behind_proxy/)
