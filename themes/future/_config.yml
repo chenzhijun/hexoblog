@@ -333,7 +333,7 @@ baidu_analytics: 64f9df4705290b3eaeaf10145b170a11
 
 # Disqus
 disqus:
-  enable: false
+  enable: true
   shortname: chenzhijun-me
   count: true
 
@@ -342,7 +342,7 @@ disqus:
 
 # changyan
 changyan:
-  enable: true
+  enable: false
   appid: cyt9QHuQ0
   appkey: 2d0ce16f8accfa335843264a44b1d83d
 
