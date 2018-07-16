@@ -244,6 +244,8 @@ where a.id =b.cityId_col and a.id=?
        “language”: “”
      
    }'
+
+   curl -X POST http://localhost:8080/cmtoken/oauth/v1.0/check -H 'authorization: Basic dl9zeXN0ZW1fcG9zQHZpcnR1YWwuY29tOmNtcmgxODc1' -H 'cache-control: no-cache' -H 'content-type: application/json' -d '{"token": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJjbXRva2VuIiwiaWF0IjoxNTMxNzM0MjcwLCJzdWIiOiJ7XCJ1c2VyVHlwZVwiOlwiU1RBRkZcIixcInVzZXJJZFwiOlwiZXgtaHVoMDAxQGNtcmguY29tXCIsXCJ0b2tlblwiOlwiaWRQalFveTVrMG41Rmpma2M1blNLQT09XCJ9IiwiZXhwIjoxNTMxODIwNjcwfQ.vtdGULPWI6wJ69bG_aZn_E9Kr_EYYmZXMRSfADrkQMA","userType": ["STAFF"],"systemId":"20570"}'
 ```
 
 	
