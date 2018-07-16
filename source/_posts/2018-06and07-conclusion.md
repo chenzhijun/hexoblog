@@ -56,6 +56,16 @@ A: df -h
 Q: 修改文件所有者
 A: chown -R user:group xxFile/xxDir
 
+Q: shell 文件分割字符串
+A:如下面的代码：
+
+```shell
+# !/bin/bash
+name=$(hostname -i)
+file=${name%% *} //分割空格
+df -h >/home/rhlog/$file.log
+```
+
 Q: find 使用
 
 Q: AWK 使用，grep 使用
