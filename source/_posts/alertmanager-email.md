@@ -13,7 +13,9 @@ date: 2019-01-08 23:46:39
 ## Alertmanager 配置
 
 alertmanager 的配置主要是要配置邮箱（通知方式）和模板地址；文档地址：[Alertmanager 地址](https://prometheusAio/docs/alerting/configuration/#email_config)，配置完之后就只需要在模板中定义就好了。
-<!--more-->
+
+<!-- more -->
+
 ```yaml
 
 ...
@@ -42,7 +44,7 @@ to: <tmpl_string>
 
 templates:
 - '/etc/alertmanager/templates/xxx.tmpl'
-
+```
 
 ## 模板配置
 
