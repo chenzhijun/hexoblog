@@ -1,10 +1,9 @@
 ---
 title: Alertmanager 配置邮件模板
-tags:
-  - Alertmanager
-categories: Alertmanager
 copyright: true
 date: 2019-01-08 23:46:39
+tags: Alertmanager
+categories: Alertmanager
 ---
 
 
@@ -18,9 +17,7 @@ alertmanager 的配置主要是要配置邮箱（通知方式）和模板地址�
 
 ```yaml
 
-...
-...
-
+....
 # Whether or not to notify about resolved alerts.
 [ send_resolved: <boolean> | default = false ]
 
@@ -44,13 +41,15 @@ to: <tmpl_string>
 
 templates:
 - '/etc/alertmanager/templates/xxx.tmpl'
+
 ```
 
 ## 模板配置
 
 下面给出一份模板配置的文件：
 
-```tmpl
+```
+
 {{ define "email.common.html" }}
 
 <div>this is test....</div>
@@ -140,14 +139,23 @@ templates:
 
 
 {{end}}
+
 ```
+ 
+这里要注意的是第一行:` define "email.common.html" `记住结尾一定要有 `end` 与之对应，因为 golang 的 template 模板限制。
+其实这个 tmpl 文件就是 golang 的 template 模板。以前看到还有点懵，用过一次 golang 中 template 功能之后，会有很多明白的地方。
 
-这里要注意的是第一行：`{{ define "email.common.html" }}` 记住结尾一定要有`{{end}}` 与之对应，因为golang的template模板限制。其实这个tmpl文件就是golang的template模板。以前看到还有点懵，用过一次golang中template功能之后，会有很多明白的地方。在一个文件中也是可以定义多个模板的只需要有多个`{{define "xxx"}}`即可。记住在alertmanager的配置文件`alertmanager.yml`中一定要有：`html: '{{ template "email.common.html" . }}'`,这里的`email.common.html`要与tmpl文件中定义的相同。
+在一个文件中也是可以定义多个模板的只需要有多个` define "xxx" `即可。记住在 alertmanager 的配置文件`alertmanager.yml`中一定要有
 
-源码中有示例:[alertmanager template](https://github.com/prometheus/alertmanager/blob/master/template/default.tmpl)
+```yaml
+html:  {{template "email.common.html" }} .
+``` 
 
+这里的`email.common.html`要与tmpl文件中定义的相同。
 
-而tmpl文件里面的内容都在这个go文件中[template.go](https://github.com/prometheus/alertmanager/blob/master/template/template.go) 可以看到里面有个`Data` struct。这里就是它的详细信息了。
+源码中有示例: [alertmanager template](https://github.com/prometheus/alertmanager/blob/master/template/default.tmpl)
+
+而tmpl文件里面的内容都在这个go文件中 [template.go](https://github.com/prometheus/alertmanager/blob/master/template/template.go) 可以看到里面有个`Data`struct。这里就是它的详细信息了。
 
 ## 扩展阅读
 
