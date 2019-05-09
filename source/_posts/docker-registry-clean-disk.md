@@ -1,3 +1,11 @@
+---
+title: Docker Registry 磁盘空间清理
+copyright: true
+date: 2019-05-09 23:06:39
+tags: Docker
+categories: Docker
+---
+
 # Docker Registry 磁盘空间清理
 
 使用 Docker 的时候用的是 Docker Registry 来存储镜像。一开始的时候给了500G数据盘，日积月累的累积的数据就开始变多了。
