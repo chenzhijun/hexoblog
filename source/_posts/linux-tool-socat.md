@@ -2,7 +2,7 @@
 title: Linux 工具-socat
 copyright: true
 date: 2019-06-30 16:20:53
-tags: Linux
+tags: tools
 categories: Linux
 ---
 
