@@ -396,3 +396,7 @@ vdd             252:48   0   10G  0 disk
 └─vg00-vg--data 253:0    0   16G  0 lvm  /mydata
 
 ```
+
+## lv删除
+
+`lvremove `
