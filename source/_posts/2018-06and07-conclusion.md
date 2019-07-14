@@ -74,4 +74,7 @@ Q: haproxy 使用
 
 Q: Ansible 直接使用命令
 
+A: ansible-playbook -i host  -m shell -a "docker ps"
+
 Q: Dockerfile 制作镜像
+
