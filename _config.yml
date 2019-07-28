@@ -96,3 +96,4 @@ algolia:
   applicationID: 'JPAPDSUEBG'
   indexName: 'BBOX'
   chunkSize: 5000
+  apiKey: 78fc87248cf1aaab283dd8c89df19f39
