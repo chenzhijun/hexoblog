@@ -20,6 +20,10 @@
     "hexo-renderer-ejs": "^0.2.0",
     "hexo-renderer-marked": "^0.2.10",
     "hexo-renderer-stylus": "^0.3.1",
-    "hexo-server": "^0.2.0"
+    "hexo-server": "^0.2.0",
+    "lodash": ">=4.17.13",
+    "lodash.merge": ">=4.6.2",
+    "braces": ">=2.3.1",
+    "js-yaml": ">=3.13.1"
   }
 }
