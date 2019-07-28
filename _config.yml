@@ -91,3 +91,8 @@ search:
 
 feed:
   path: rss.xml
+
+algolia:
+  applicationID: 'JPAPDSUEBG'
+  indexName: 'BBOX'
+  chunkSize: 5000
