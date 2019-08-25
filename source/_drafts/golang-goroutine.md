@@ -1,4 +1,0 @@
----
-title: golang-goroutine
-tags:
----
