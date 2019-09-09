@@ -18,3 +18,10 @@ tags: mybatis
 ## 多线程方式
 
 采用多了50个线程，用线程池管理，
+
+总长度：1086712
+
+ok complete work...
+start:Sat Sep 07 20:15:29 CST 2019
+end:Sat Sep 07 20:29:53 CST 2019
+startTime:Sat Sep 07 20:15:29 CST 2019,endTime:Sat Sep 07 20:29:53 CST 2019
