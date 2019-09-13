@@ -2,8 +2,8 @@
 title: 基础排序算法
 copyright: true
 date: 2019-09-13 19:14:07
-tags:
-categories:
+tags: 排序算法
+categories: 数据结构与算法
 ---
 
 
