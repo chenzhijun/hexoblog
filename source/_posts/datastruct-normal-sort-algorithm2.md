@@ -333,6 +333,6 @@ public class CountingSort {
 }
 ```
 
-## 集中基础排序算法比较
+## 几种基础排序算法比较
 
 ![几种基础排序算法比较](/images/qiniu/2019-09-13-19-14-25.png)
