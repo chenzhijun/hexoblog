@@ -21,3 +21,7 @@ SET GOARCH=amd64
 ```
 
 最后使用`go build .`就可以了。 也算是异常简单。
+
+如果在`*nix`平台:
+
+`export CGO_ENABLED=0 && export GOOS=linux && export GOARCH=amd64 && go build .`
