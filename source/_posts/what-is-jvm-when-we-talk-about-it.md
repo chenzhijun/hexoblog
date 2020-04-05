@@ -53,3 +53,4 @@ JVM(Java Virtual Machine) 中文名称为 Java 虚拟机。它的作用是为 Ja
 
 [Java Language and Virtual Machine Specifications](https://docs.oracle.com/javase/specs/index.html)
 
+[gc 调优-官网文档](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/index.html)
