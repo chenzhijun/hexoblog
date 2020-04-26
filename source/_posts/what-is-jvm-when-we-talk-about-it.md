@@ -1,9 +1,9 @@
 ---
-title: 查漏补缺 Java 系列 - JVM
+title: 查漏补缺 Java 系列 - JVM 基础概念
 copyright: true
 date: 2020-04-04 15:15:49
-tags:
-categories:
+tags: Java
+categories: Java
 ---
 
 # 查漏补缺 Java 系列 - JVM
