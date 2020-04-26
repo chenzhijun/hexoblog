@@ -30,3 +30,23 @@ xfs,ext4 ：是指格式化成什么磁盘类型
 
 ![2018-07-26-13-33-04](/images/qiniu/2018-07-26-13-33-04.png)
 
+
+## 挂卷快捷操作
+
+用 lsblk 查看挂载的磁盘名：
+
+```
+sudo pvcreate /dev/vdb
+
+sudo vgcreate vg02 /dev/vdb
+
+sudo lvcreate -l 100%free -n data vg02
+
+sudo mkfs.xfs -n ftype=1 /dev/vg02/data
+
+sudo mkdir /data
+
+sudo mount /dev/vg02/data /data
+
+sudo echo /dev/mapper/vg02-data /data xfs defaults 0 0 >> /etc/fstab
+```
