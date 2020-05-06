@@ -26,6 +26,7 @@ after_script:
     # - ls pub_web
     - cd pub_web
     - ls
+    - cat index.html
     # - git status
     # - git remote -v
     - git config user.name "chenzhijun"
