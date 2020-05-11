@@ -1,6 +1,7 @@
 language: node_js # 设置语言
 
-node_js: stable # 设置相应版本
+#node_js: stable # 设置相应版本
+node_js: v9.11.2 # 设置相应版本
 
 cache:
     apt: true
@@ -20,11 +21,13 @@ script:
 
 after_script:
     - git clone ${GH_REF} pub_web
-    # - ls pub_web
-    # - rm -rf pub_web/*
+    - ls pub_web
+    - rm -rf pub_web/*
     - cp -rf public/* pub_web/
     # - ls pub_web
     - cd pub_web
+    - ls -alh
+    - cat index.html
     # - git status
     # - git remote -v
     - git config user.name "chenzhijun"

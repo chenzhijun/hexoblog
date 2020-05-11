@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "hexo": {
-    "version": "3.9.0"
+    "version": "3.8.0"
   },
   "dependencies": {
     "hexo": "^3.8.0",
@@ -24,6 +24,9 @@
     "lodash": ">=4.17.13",
     "lodash.merge": ">=4.6.2",
     "braces": ">=2.3.1",
-    "js-yaml": ">=3.13.1"
+    "js-yaml": ">=3.13.1",
+    "acorn": ">=6.4.1",
+    "kind-of": ">=6.0.3",
+    "minimist": ">=1.2.3"
   }
 }
