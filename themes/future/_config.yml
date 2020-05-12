@@ -346,6 +346,8 @@ changyan:
   appid: cyt9QHuQ0
   appkey: 2d0ce16f8accfa335843264a44b1d83d
 
+# Gitment
+# Introduction: https://imsun.net/posts/gitment-introduction/
 gitment:
   enable: true
   githubID: chenzhijun
