@@ -2,13 +2,13 @@
 title: Java HashMap
 copyright: true
 date: 2020-03-25 22:57:59
-tags:
-categories:
+tags: Java
+categories: Java
 ---
 
 # HashMap 介绍
 
-这个该怎么写了？其实网上好多博客说了这个，其实我看了之后，甚至看了源码之后我也不知道怎么写，源码中Hashmap的介绍大致如下：
+这个该怎么写了？其实网上好多博客说了这个，其实我看了之后，甚至看了源码之后我也不知道怎么写，源码中Hashmap的介绍大致如下：
 
 ```
 Hashmap 大致是等于hashtable的，除了非同步和允许null值之外；
