@@ -330,17 +330,10 @@ baidu_analytics: 64f9df4705290b3eaeaf10145b170a11
 
 # Duoshuo ShortName
 #duoshuo_shortname: chenzhijun
-gitment:
-  enable: true
-  githubID: chenzhijun
-  repo: chenzhijun.github.com
-  ClientID: 2b0cd3a2d7d53cde1ef7
-  ClientSecret: 2eb10e4f6ca8c0996b7bebf8e754ce5039e217ed
-  lazy: true
 
 # Disqus
 disqus:
-  enable: true
+  enable: false
   shortname: chenzhijun-me
   count: true
 
@@ -352,6 +345,14 @@ changyan:
   enable: false
   appid: cyt9QHuQ0
   appkey: 2d0ce16f8accfa335843264a44b1d83d
+
+gitment:
+  enable: true
+  githubID: chenzhijun
+  repo: chenzhijun.github.com
+  ClientID: 2b0cd3a2d7d53cde1ef7
+  ClientSecret: 2eb10e4f6ca8c0996b7bebf8e754ce5039e217ed
+  lazy: false 
 
 # Support for youyan comments system.
 # You can get your uid from http://www.uyan.cc
