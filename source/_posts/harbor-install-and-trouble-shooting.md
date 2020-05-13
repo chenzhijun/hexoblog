@@ -364,6 +364,27 @@ auth:
 
 另外就是要注意 pg 的权限问题。
 
+### https 问题3: docker push 出现 unauthorized: authentication required
+
+这是一个很诡异的问题，找了我两个小时；现象是harbor 的页面能登陆，并且页面一切功能正常；直接使用 docker login 也是没有问题，但是在 push 镜像的时候出现，unauthorized: authentication required;明明已经登陆了，也没有问题，但是不知道为啥还是会报错。这个问题在我这里是由于 haproxy 的配置出现的问题。harbor push 镜像的过程是从 harbor 服务获取一个 token，然后再去访问 registry 的存储来存储数据，如果是是本地存储，那么会访问 80 端口。我的配置中将 haproxy 的 80 端口转了 redirect，所以导致认证失败。附上一段在 haproxy 段做证书解析而后端 harbor 为 http 的 haproxy 的服务配置：
+
+```conf
+frontend harbor
+  bind *:80
+  bind *:443 ssl crt /data/harbor/harbor/chenzhijun.me.pem
+  reqadd X-Forwarded-Proto:\ https
+  default_backend  harbor-backend
+
+backend harbor-backend
+  balance  source
+  mode  http
+  timeout  client 3h
+  timeout  server 3h
+  server server1 10.1.1.2:80  check inter 2000 fall 3
+```
+
+如果还是有问题，可以在`/var/log/harbor`目录下查看相关的 log 日志。也可以查看系统日志：`/var/log/message`来定位问题。
+
 我们也安装了 `/install.sh --with-clair --with-chartmuseum` clair 和 chartmuseum，这两个工具，clair 的主要目的是扫描 CVE 漏洞，所以是不是需要链接一下外网更新一下；chartmuseum 是一个 helm chart 管理器;
 
 ![2020-04-26-22-15-03](/images/qiniu/2020-04-26-22-15-03.png)
