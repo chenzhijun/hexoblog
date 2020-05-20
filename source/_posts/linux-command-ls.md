@@ -3,7 +3,7 @@ title: 常用的 Linux 基础命令
 date: 2017-04-18 19:15:03
 tags: 
 	- Linux
-categories: Liux
+categories: Linux
 ---
 
 ### 常用 Linux 命令
