@@ -147,7 +147,7 @@ include /etc/logrotate.d
 
 
 
-<!-->
+<!--
 #config logrotate
 cat > /etc/logrotate.d/ingress << EOF
 /data/wisecloud/ingress-gateway/*log {
@@ -166,4 +166,4 @@ cat > /etc/logrotate.d/ingress << EOF
     dateformat -%Y%m%d%H
 }
 EOF
-<-->
+-->
