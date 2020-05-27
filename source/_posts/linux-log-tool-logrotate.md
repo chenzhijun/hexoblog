@@ -147,3 +147,23 @@ include /etc/logrotate.d
 
 
 
+<!-->
+#config logrotate
+cat > /etc/logrotate.d/ingress << EOF
+/data/wisecloud/ingress-gateway/*log {
+    copytruncate
+    daily
+    create
+    rotate 15
+    missingok
+    notifempty
+    compress
+    sharedscripts
+    size 1G
+    createolddir
+    olddir /data/wisecloud/ingress-gateway/bak
+    dateext
+    dateformat -%Y%m%d%H
+}
+EOF
+<-->
