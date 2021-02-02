@@ -215,7 +215,7 @@ zone "your_website.com" IN {
 4. 检查配置文件：
 
 ```
-[root@k8s-dev-yw-1 etc]# named-checkzone "cmrrancher.com" /var/named/cmrhrancher.com.zone
+[root@k8s-dev-yw-1 etc]# named-checkzone "cmrrancher.com" /var/named/chenzhijunrancher.com.zone
 zone cmrrancher.com/IN: loaded serial 1
 OK
 [root@k8s-dev-yw-1 etc]# named-checkconf
@@ -225,7 +225,7 @@ OK
 5. 重载服务
 `systemctl reload named.service`
 
-6. 测试：`ping www.cmrhrancher.com`
+6. 测试：`ping www.chenzhijunrancher.com`
 
 
 ### 附录

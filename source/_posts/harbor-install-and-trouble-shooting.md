@@ -398,7 +398,7 @@ https://github.com/goharbor/harbor/blob/release-1.8.0/docs/migration_guide.md
 
 迁移工具使用方式：
 
-`docker run -it --rm -v /data/harbor/harbor/harbor.cfg:/harbor-migration/harbor-cfg/harbor.cfg -v /data/harbor/harbor/harbor.yml:/harbor-migration/harbor-cfg-out/harbor.yml harbor.uat.cmft.com/goharbor/harbor-migrator:v1.8.3 --cfg up`
+`docker run -it --rm -v /data/harbor/harbor/harbor.cfg:/harbor-migration/harbor-cfg/harbor.cfg -v /data/harbor/harbor/harbor.yml:/harbor-migration/harbor-cfg-out/harbor.yml harbor.uat.x.com/goharbor/harbor-migrator:v1.8.3 --cfg up`
 
 然后就停掉原来的 1.7 使用新的 1.8 的安装包启动就可以了。
 

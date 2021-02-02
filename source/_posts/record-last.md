@@ -20,7 +20,7 @@ Q: Docker 使用非Root用户管理或者 Docker无权限
 
 A: https://docs.docker.com/install/linux/linux-postinstall/
 
-`Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Post http://%2Fvar%2Frun%2Fdocker.sock/v1.26/build?buildargs=%7B%7D&buildbinds=null&cachefrom=%5B%5D&cgroupparent=&cpuperiod=0&cpuquota=0&cpusetcpus=&cpusetmems=&cpushares=0&dockerfile=Dockerfile&labels=%7B%7D&memory=0&memswap=0&networkmode=default&pull=1&rm=1&shmsize=0&t=harbor.uat.cmft.com%2Fcmft-library%2Fadms-app-0627%3A170&ulimits=null: dial unix /var/run/docker.sock: connect: permission denied`
+`Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Post http://%2Fvar%2Frun%2Fdocker.sock/v1.26/build?buildargs=%7B%7D&buildbinds=null&cachefrom=%5B%5D&cgroupparent=&cpuperiod=0&cpuquota=0&cpusetcpus=&cpusetmems=&cpushares=0&dockerfile=Dockerfile&labels=%7B%7D&memory=0&memswap=0&networkmode=default&pull=1&rm=1&shmsize=0&t=harbor.uat.x.com%2Fx-library%2Fadms-app-0627%3A170&ulimits=null: dial unix /var/run/docker.sock: connect: permission denied`
 
 Q: Docker 的远程仓库用户权限文件。
 
