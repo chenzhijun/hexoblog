@@ -32,7 +32,7 @@ Q: 修改Docker的docker.service
 A：`sudo cat /lib/systemd/system/docker.service`,可以使用`find / -name docker.service`来找到相应文件。修改这个文件之后需要重启daemon。`systemctl daemon-reload`。在这个文件里面可以增加docker的http,https的代理。
 
 Q: 遇到Docker push镜像的时候出现https的问题
-A: 在/etc/docker/daemon.json文件中增加：["insecure-registries":["registry.cmrh.com:5000"]
+A: 在/etc/docker/daemon.json文件中增加：["insecure-registries":["registry.chenzhijun.com:5000"]
 
 Q: "can't create unix socket /var/run/docker.sock: is a directory"
 A: rm -fr  /var/run/docker.sock/

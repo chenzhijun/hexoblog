@@ -43,7 +43,7 @@ sudo docker exec -it gitlab vi /etc/gitlab/gitlab.rb
 
 如果你是用的docker方式，看上面的命令，可以编辑本地目录`/srv/gitlab/config/gitlab.rb`也是可以的，不过需要在docker容器里面进行配置重加载。
 
-安装邮件的文档：[配置smtp]](https://docs.gitlab.com/omnibus/settings/smtp.html#doc-nav)
+安装邮件的文档：[配置smtp](https://docs.gitlab.com/omnibus/settings/smtp.html#doc-nav)
 
 贴一份在实际中使用的邮件配置：
 
